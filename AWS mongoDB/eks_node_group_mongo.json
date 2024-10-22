@@ -1,0 +1,167 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-11-30T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/eks_node_group.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅서비스",
+  "resource_id": "rsc-29",
+  "resource_name": "Eks_node_group",
+  "resource_type": "eks_node_group",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "eks_node_group",
+          "resource_name": "Eks_node_group",
+          "type": "single"
+        },
+        "value": {
+          "node_role_arn": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "iam_role",
+              "description": "The Amazon Resource Name (ARN) of the IAM role that provides permissions for the EKS node group",
+              "immutable": "false"
+            }
+          },
+          "cluster_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "eks_cluster",
+              "description": "link eks cluster.",
+              "immutable": "false"
+            }
+          },
+          "node_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the node group name.",
+              "immutable": "false"
+            }
+          },
+          "depends_on": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "iam_role_policy_attachment",
+              "description": "Dependencies for the EKS node group.",
+              "immutable": "false"
+            }
+          },
+          "scaling_config": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "min_size": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "",
+                    "immutable": "false"
+                  }
+                },
+                "max_size": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "",
+                    "immutable": "false"
+                  }
+                },
+                "desired_size": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "",
+                    "immutable": "false"
+                  }
+                }
+              },
+              "description": "node scaling config",
+              "immutable": "false"
+            }
+          },
+          "subnet_ids": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "subnet",
+              "description": "Subnet IDs associated with the EKS node",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 28,
+  "terraform_code": "resource \"aws_eks_node_group\" \"\" {\n  node_role_arn = aws_iam_role..arn\n  cluster_name = aws_eks_cluster..name \n node_group_name = \"\"\n depends_on = [aws_iam_role_policy_attachment..name]\n  scaling_config {\n min_size = \"\"\n  max_size = \"\"\n desired_size = \"\"\n } subnet_ids = [aws_subnet..id]\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "eks_node_group",
+        "resource_name": "Eks_node_group",
+        "value": {
+          "node_role_arn": "",
+          "cluster_name": "",
+          "node_group_name": "",
+          "depends_on": [],
+          "scaling_config": {
+            "min_size": "",
+            "max_size": "",
+            "desired_size": ""
+          },
+          "subnet_ids": []
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-11-30T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": [
+    "iam_role",
+    "iam_role_policy_attachment",
+    "eks_cluster",
+    "subnet"
+  ]
+}

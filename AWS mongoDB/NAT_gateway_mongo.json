@@ -1,0 +1,85 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da08"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-11-30T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-7025b8c87722",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/nat_gateway.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-16",
+  "resource_name": "Nat_Gateway",
+  "resource_type": "nat_gateway",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "nat_gateway",
+          "resource_name": "Nat_Gateway",
+          "type": "single"
+        },
+        "value": {
+          "subnet_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "subnet",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "allocation_id": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "eip",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 15,
+  "terraform_code": "resource \"aws_nat_gateway\" \"\" {\n  subnet_id = aws_subnet..id\n  allocation_id = aws_eip..id\n}"
+  ,
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "nat_gateway",
+        "resource_name": "Nat_Gateway",
+        "value": {
+          "subnet_id": "",
+          "allocation_id": ""
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-11-30T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": [
+    "subnet",
+    "lib_data_subnet",
+    "eip"
+  ]
+}

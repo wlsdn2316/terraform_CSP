@@ -1,0 +1,86 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/compute_router.png",
+  "provider": "gcp",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "네트워크 서비스",
+  "resource_id": "rsc-36",
+  "resource_name": "compute_router",
+  "resource_type": "compute_router",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "compute_router",
+          "resource_name": "compute_router",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the cloud router.",
+              "immutable": "false"
+            }
+          },
+          "network": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "compute_network",
+              "description": "The network ID the cloud router belongs to.",
+              "immutable": "false"
+            }
+          },
+          "region": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The region where the cloud router is located.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 36,
+  "terraform_code": "resource \"google_compute_router\" \"cloud_router\" {\n  name = \"my-cloud-router\"\n  network = google_compute_network.vpc_network.id\n  region = \"asia-northeast3\"\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "compute_router",
+        "resource_name": "compute_router",
+        "value": {
+          "name": "my-cloud-router",
+          "network": "",
+          "region": "asia-northeast3"
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "compute_network"
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/compute_router_nat.png",
+  "provider": "gcp",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "네트워크 서비스",
+  "resource_id": "rsc-37",
+  "resource_name": "compute_router_nat",
+  "resource_type": "compute_router_nat",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "compute_router_nat",
+          "resource_name": "compute_router_nat",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the Cloud NAT.",
+              "immutable": "false"
+            }
+          },
+          "router": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "compute_router",
+              "description": "The name of the cloud router associated with this NAT.",
+              "immutable": "false"
+            }
+          },
+          "region": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The region where the Cloud NAT is located.",
+              "immutable": "false"
+            }
+          },
+          "nat_ip_allocate_option": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "AUTO_ONLY"
+                },
+                {
+                  "value": "MANUAL_ONLY"
+                }
+              ],
+              "description": "The option for NAT IP allocation.",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "source_subnetwork_ip_ranges_to_nat": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "ALL_SUBNETWORKS_ALL_IP_RANGES"
+                },
+                {
+                  "value": "ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES"
+                },
+                {
+                  "value": "LIST_OF_SUBNETWORKS"
+                }
+              ],
+              "description": "The source subnetwork IP ranges to NAT.",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "subnetwork": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "objectArray",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "link_target": "compute_subnetwork",
+                    "description": "The name of the subnetwork to NAT.",
+                    "immutable": "false"
+                  }
+                },
+                "source_ip_ranges_to_nat": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "ALL_IP_RANGES"
+                      },
+                      {
+                        "value": "PRIMARY_IP_RANGE"
+                      }
+                    ],
+                    "description": "The source IP ranges to NAT.",
+                    "item_description": "",
+                    "immutable": "false"
+                  }
+                }
+              },
+              "description": "Subnetwork configuration for Cloud NAT.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 37,
+  "terraform_code": "resource \"google_compute_router_nat\" \"cloud_nat\" {\n  name = \"my-cloud-nat\"\n  router = google_compute_router.cloud_router.name\n  region = \"asia-northeast3\"\n  nat_ip_allocate_option = \"AUTO_ONLY\"\n  source_subnetwork_ip_ranges_to_nat = \"LIST_OF_SUBNETWORKS\"\n  subnetwork {\n    name = google_compute_subnetwork.subnetwork.name\n    source_ip_ranges_to_nat = [\"ALL_IP_RANGES\"]\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "compute_router_nat",
+        "resource_name": "compute_router_nat",
+        "value": {
+          "name": "my-cloud-nat",
+          "router": "",
+          "region": "asia-northeast3",
+          "nat_ip_allocate_option": "AUTO_ONLY",
+          "source_subnetwork_ip_ranges_to_nat": "LIST_OF_SUBNETWORKS",
+          "subnetwork": {
+            "name": "",
+            "source_ip_ranges_to_nat": ["ALL_IP_RANGES"]
+          }
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["compute_router", "compute_subnetwork"]
+}

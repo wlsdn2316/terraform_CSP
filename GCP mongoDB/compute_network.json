@@ -1,0 +1,71 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/compute_network.png",
+  "provider": "gcp",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "네트워크 서비스",
+  "resource_id": "rsc-34",
+  "resource_name": "compute_network",
+  "resource_type": "compute_network",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "compute_network",
+          "resource_name": "compute_network",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the VPC network.",
+              "immutable": "false"
+            }
+          },
+          "auto_create_subnetworks": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "description": "Whether to automatically create subnetworks.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 34,
+  "terraform_code": "resource \"google_compute_network\" \"\" {\n  name = \"my-vpc-network\"\n  auto_create_subnetworks = false\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "compute_network",
+        "resource_name": "compute_network",
+        "value": {
+          "name": "my-vpc-network",
+          "auto_create_subnetworks": false
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": []
+}

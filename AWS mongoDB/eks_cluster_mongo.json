@@ -1,0 +1,131 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-11-30T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/eks_cluster.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅서비스",
+  "resource_id": "rsc-28",
+  "resource_name": "Eks_cluster",
+  "resource_type": "eks_cluster",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "eks_cluster",
+          "resource_name": "Eks_cluster",
+          "type": "single"
+        },
+        "value": {
+          "role_arn": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "iam_role",
+              "description": "The Amazon Resource Name (ARN) of the IAM role that provides permissions for the EKS cluster.",
+              "immutable": "false"
+            }
+          },
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the EKS cluster.",
+              "immutable": "false"
+            }
+          },
+          "depends_on": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "iam_role_policy_attachment",
+              "description": "Dependencies for the EKS cluster.",
+              "immutable": "false"
+            }
+          },
+          "vpc_config": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "security_group_ids": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "linkArray",
+                    "link_target": "security_group",
+                    "description": "Security group IDs associated with the EKS cluster.",
+                    "immutable": "false"
+                  }
+                },
+                "subnet_ids": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "linkArray",
+                    "link_target": "subnet",
+                    "description": "Subnet IDs associated with the EKS cluster.",
+                    "immutable": "false"
+                  }
+                }
+              },
+              "description": "VPC configuration for the EKS cluster.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 27,
+  "terraform_code": "resource \"aws_eks_cluster\" \"\" {\n  role_arn = aws_iam_role..arn\n  name = \"\"\n  depends_on = [aws_iam_role_policy_attachment..name]\n  vpc_config {\n security_group_ids = [aws_security_group..id]\n    subnet_ids = [aws_subnet..id, aws_subnet..id]\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "eks_cluster",
+        "resource_name": "Eks_cluster",
+        "value": {
+          "role_arn": "",
+          "name": "",
+          "depends_on": [],
+          "vpc_config": {
+            "security_group_ids": [],
+            "subnet_ids": []
+          }
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-11-30T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": [
+    "iam_role",
+    "iam_role_policy_attachment",
+    "security_group",
+    "subnet"
+  ]
+}

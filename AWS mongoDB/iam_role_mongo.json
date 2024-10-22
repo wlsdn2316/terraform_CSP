@@ -1,0 +1,101 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da17"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-7025b8c87722",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/iam_role.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "인증 및 권한",
+  "resource_id": "rsc-25",
+  "resource_name": "IAM_Role",
+  "resource_type": "iam_role",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "iam_role",
+          "resource_name": "IAM_Role",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the role.",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "assume_role_policy": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "objectArray",
+              "description": "The policy that grants an entity permission to assume the role.",
+              "item_description": "",
+              "immutable": "false",
+              "child": {
+                "Service": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The service that is allowed to assume the role.",
+                    "item_description": "",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 24,
+  "terraform_code": "resource \"aws_iam_role\" \"\" {\n  name = \"my-role\"\n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [{\n      Action = \"sts:AssumeRole\"\n      Effect = \"Allow\"\n      Principal = {\n        Service = [\"ec2.amazonaws.com\", \"lambda.amazonaws.com\"]\n      }\n    }]\n  })\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "iam_role",
+        "resource_name": "IAM_Role",
+        "value": {
+          "name": "my-role",
+          "assume_role_policy": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": ["ec2.amazonaws.com", "lambda.amazonaws.com"]
+                }
+              }
+            ]
+          }
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": []
+}

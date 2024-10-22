@@ -1,0 +1,479 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da01"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/auto-scaling-group.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅서비스",
+  "resource_id": "rsc-16",
+  "resource_name": "Autoscaling",
+  "resource_type": "autoscaling",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "autoscaling_group",
+          "resource_name": "Autoscaling_Group",
+          "type": "single"
+        },
+        "value": {
+          "launch_template": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "version": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          },
+          "min_size": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "max_size": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "desired_capacity": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "vpc_zone_identifier": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "tag": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "key": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "value": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "propagate_at_launch": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "boolean",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "true"
+                      },
+                      {
+                        "value": "false"
+                      }
+                    ],
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "autoscaling_policy",
+          "resource_name": "Autoscaling_Policy",
+          "type": "array"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "scaling_adjustment": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "adjustment_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "cooldown": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "autoscaling_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "policy_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "cloudwatch_metric_alarm",
+          "resource_name": "Cloudwatch_Metric_Alarm",
+          "type": "arraySet"
+        },
+        "value": {
+          "alarm_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "comparison_operator": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "evaluation_periods": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "metric_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "namespace": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "period": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "statistic": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "threshold": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "alarm_actions": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "dimensions": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "AutoScalingGroupName": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 15,
+  "terraform_code": "resource \"aws_autoscaling_group\" \"\" {\n  launch_template {\n    id      = aws_launch_template..id\n    version = \"\"\n  }\n\n  min_size         = \n  max_size         = \n  desired_capacity = \n  vpc_zone_identifier = [aws_subnet..id]\n\n  tag {\n    key                 = \"\"\n    value               = \"\"\n    propagate_at_launch = \n  }\n}\n\nresource \"aws_autoscaling_policy\" \"\" {\n  name                   = \"\"\n  scaling_adjustment     = \n  adjustment_type        = \"\"\n  cooldown               = \n  autoscaling_group_name = aws_autoscaling_group..name\n  policy_type = \"\"\n}\n\nresource \"aws_cloudwatch_metric_alarm\" \"\" {\n  alarm_name          = \"\"\n  comparison_operator = \"\"\n  evaluation_periods  = \"\"\n  metric_name         = \"\"\n  namespace           = \"\"\n  period              = \n  statistic           = \"\"\n  threshold           = \n  alarm_actions       = [aws_autoscaling_policy..arn]\n\n  dimensions = {\n    AutoScalingGroupName = aws_autoscaling_group..name\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "autoscaling_group",
+        "resource_name": "Autoscaling_Group",
+        "value": {
+          "launch_template": {
+            "id": "",
+            "version": ""
+          },
+          "min_size": "",
+          "max_size": "",
+          "desired_capacity": "",
+          "vpc_zone_identifier": "",
+          "tag": {
+            "key": "",
+            "value": "",
+            "propagate_at_launch": ""
+          }
+        }
+      },
+      {
+        "resource_type": "autoscaling_policy",
+        "resource_name": "Autoscaling_Policy",
+        "value": {
+          "name": "",
+          "scaling_adjustment": "",
+          "adjustment_type": "",
+          "cooldown": "",
+          "autoscaling_group_name": "",
+          "policy_type": ""
+        }
+      },
+      {
+        "resource_type": "cloudwatch_metric_alarm",
+        "resource_name": "Cloudwatch_Metric_Alarm",
+        "value": {
+          "alarm_name": "",
+          "comparison_operator": "",
+          "evaluation_periods": "",
+          "metric_name": "",
+          "namespace": "",
+          "period": "",
+          "statistic": "",
+          "threshold": "",
+          "alarm_actions": "",
+          "dimensions": {
+            "AutoScalingGroupName": ""
+          }
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-11-30T09:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": [
+    "subnet",
+    "lib_data_subnet"
+  ]
+}

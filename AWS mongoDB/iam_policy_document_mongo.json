@@ -1,0 +1,115 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da17"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-7025b8c87722",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/iam_role.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "인증 및 권한",
+  "resource_id": "rsc-25",
+  "resource_name": "IAM_Policy_Document",
+  "resource_type": "iam_policy_document",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "iam_policy_document",
+          "resource_name": "IAM_Policy_Document",
+          "type": "single"
+        },
+        "value": {
+          "effect": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "Defines the effect of the policy. Can be 'Allow' or 'Deny'.",
+              "immutable": "false"
+            }
+          },
+          "actions": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "List of actions the policy allows or denies.",
+              "immutable": "false"
+            }
+          },
+          "principals": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "objectArray",
+              "child": {
+                "type": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                  "type": "input",
+                  "description": "The type of the principal (e.g., AWS, Service, etc.).",
+                  "immutable": "false"
+                  }
+                },
+                "identifiers": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                  "type": "array",
+                  "description": "Identifiers for the principal, like user or role ARN.",
+                  "immutable": "false"
+                  }
+                }
+              },
+              "description": "The principal that is allowed or denied actions.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 24,
+  "terraform_code": "resource \"aws_iam_policy_document\" \"\" {\n  statement {\n    effect    = \"Allow\"\n    actions   = [\"sts:AssumeRole\"]\n    principals {\n      type        = \"Service\"\n      identifiers = [\"ec2.amazonaws.com\"]\n    }\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "iam_policy_document",
+        "resource_name": "IAM_Policy_Document",
+        "value": {
+          "effect": "Allow",
+          "actions": ["sts:AssumeRole"],
+          "principals": [
+            {
+              "type": "Service",
+              "identifiers": ["ec2.amazonaws.com"]
+            }
+          ]
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-01-01T00:00:00.000Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": []
+}

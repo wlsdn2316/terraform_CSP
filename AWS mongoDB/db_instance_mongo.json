@@ -1,0 +1,304 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da14"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-7025b8c87722",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/db_instance.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-9",
+  "resource_group_name": "데이터베이스",
+  "resource_id": "rsc-22",
+  "resource_name": "DB_Instance",
+  "resource_type": "db_instance",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "db_instance",
+          "resource_name": "DB_Instance",
+          "type": "single"
+        },
+        "value": {
+          "allocated_storage": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The allocated storage size in gigabytes.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "db_name": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the database.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "engine": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "false",
+              "items": [
+                {
+                  "value": "mysql"
+                },
+                {
+                  "value": "postgres"
+                },
+                {
+                  "value": "mariadb"
+                }
+              ],
+              "description": "The database engine to use.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "engine_version": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The version of the database engine.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "instance_class": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The compute and memory capacity of the DB instance.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "username": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of master user for the client DB instance.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "password": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The password for the master database user.",
+              "item_description": "",
+              "immutable": "true"
+            }
+          },
+          "parameter_group_name": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "db_parameter_group",
+              "description": "The name of the DB parameter group to associate with this DB instance.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "publicly_accessible": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "Indicates whether the DB instance is publicly accessible.",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "multi_az": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "Indicates whether the DB instance is a Multi-AZ deployment.",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "skip_final_snapshot": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "Determines whether a final DB snapshot is created before the DB instance is deleted.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "final_snapshot_identifier": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The identifier for the final DB snapshot when the DB instance is deleted, if snapshots are enabled.",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "backup_retention_period": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "db_subnet_group_name": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "db_subnet_group",
+              "description": "The DB subnet group name to associate with this DB instance.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "replicate_source_db": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "description": "The DB instance identifier of the source DB instance if this DB instance is a replica.",
+              "item_description": "",
+              "immutable": "false",
+              "link_target": "db_instance"
+            }
+          },
+          "vpc_security_group_ids": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "description": "A list of VPC security group IDs to associate with this DB instance.",
+              "item_description": "",
+              "immutable": "false",
+              "link_target": "security_group"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 21,
+  "terraform_code": "resource \"aws_db_instance\" \"\" {\n  allocated_storage = 400\n  db_name = \"mydb\"\n  engine = \"\"\n  engine_version = \"\"\n  instance_class = \"\"\n  username = \"\"\n  password = \"\"\n  parameter_group_name = \"\"\n  publicly_accessible = false\n  multi_az = false\n  skip_final_snapshot  = false\n  final_snapshot_identifier = \"my-db-snapshot\"\n  ...\n  db_subnet_group_name = \"my-db-subnet-group\"\n  backup_retention_period = \"7\"\n replicate_source_db = \"aws_db_instance..identifier\"\n  vpc_security_group_ids = [\"sg-12345678\", \"sg-87654321\"]\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "db_instance",
+        "resource_name": "DB_Instance",
+        "value": {
+          "allocated_storage": "400",
+          "db_name": "mydb",
+          "engine": "",
+          "engine_version": "",
+          "instance_class": "",
+          "username": "",
+          "password": "",
+          "parameter_group_name": "",
+          "publicly_accessible": "false",
+          "multi_az": "false",
+          "skip_final_snapshot": "false",
+          "final_snapshot_identifier": "my-db-snapshot",
+          "backup_retention_period" : "7",
+          "db_subnet_group_name": "my-db-subnet-group",
+          "replicate_source_db": "aws_db_instance..identifier",
+          "vpc_security_group_ids": ["sg-12345678", "sg-87654321"]
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": [
+    "db_parameter_group",
+    "db_subnet_group",
+    "db_instance",
+    "security_group"
+  ]
+}

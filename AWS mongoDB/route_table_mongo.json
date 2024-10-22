@@ -1,0 +1,66 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da13"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-7025b8c87722",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/route_table.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-21",
+  "resource_name": "Route_Table",
+  "resource_type": "route_table",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "route_table",
+          "resource_name": "Route_Table",
+          "type": "single"
+        },
+        "value": {
+          "vpc_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "vpc",
+              "description": "The ID of the VPC where the route table will be created.",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 20,
+  "terraform_code": "resource \"aws_route_table\" \"\" {\n  vpc_id = aws_vpc..id\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "route_table",
+        "resource_name": "Route_Table",
+        "value": {
+          "vpc_id": ""
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": [
+    "vpc"
+  ]
+}

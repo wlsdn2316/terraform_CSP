@@ -1,0 +1,89 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/compute_attached_disk.png",
+  "provider": "gcp",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "스토리지 서비스",
+  "resource_id": "rsc-40",
+  "resource_name": "compute_attached_disk",
+  "resource_type": "compute_attached_disk",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "compute_attached_disk",
+          "resource_name": "compute_attached_disk",
+          "type": "single"
+        },
+        "value": {
+          "instance": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "compute_instance",
+              "description": "The name of the instance to attach this disk to.",
+              "immutable": "false"
+            }
+          },
+          "disk": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "compute_disk",
+              "description": "The name of the disk to attach.",
+              "immutable": "false"
+            }
+          },
+          "zone": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "compute_instance",
+              "description": "The zone where the instance and disk are located.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 40,
+  "terraform_code": "resource \"google_compute_attached_disk\" \"\" {\n  instance = google_compute_instance.default.name\n  disk = google_compute_disk.default.name\n  zone = google_compute_instance.default.zone\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "compute_attached_disk",
+        "resource_name": "compute_attached_disk",
+        "value": {
+          "instance": "",
+          "disk": "",
+          "zone": ""
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "compute_instance",
+    "compute_disk"
+  ]
+}

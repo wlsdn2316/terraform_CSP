@@ -1,0 +1,36 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da17"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/iam_role.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "인증 및 권한",
+  "resource_id": "rsc-25",
+  "resource_name": "iam_eks_nodegroup",
+  "resource_type": "iam_role",
+  "resource_type_properties": null,
+  "sort_order": 24,
+  "terraform_code": "resource \"aws_iam_role\" \"eks-nodegroup-iam\" {\n  provider = aws.ap-northeast-2\n\n   assume_role_policy = <<POLICY\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": {\n        \"Service\": \"ec2.amazonaws.com\"\n      },\n      \"Action\": \"sts:AssumeRole\"\n    }\n  ]\n}\nPOLICY\n}\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "iam_role",
+        "resource_name": "iam_eks_nodegroup"
+        
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": []
+}

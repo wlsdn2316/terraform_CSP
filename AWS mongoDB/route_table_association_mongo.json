@@ -1,0 +1,80 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da12"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-7025b8c87722",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/route_table.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-20",
+  "resource_name": "Route_Table_Association",
+  "resource_type": "route_table_association",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "route_table_association",
+          "resource_name": "Route_Table_Association",
+          "type": "single"
+        },
+        "value": {
+          "subnet_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "subnet",
+              "description": "The ID of the subnet to associate with the route table.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "route_table_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "route_table",
+              "description": "The ID of the route table to be associated with the subnet.",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 19,
+  "terraform_code": "resource \"aws_route_table_association\" \"\" {\n  subnet_id = aws_subnet..id\n  route_table_id = aws_route_table..id\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "route_table_association",
+        "resource_name": "Route_Table_Association",
+        "value": {
+          "subnet_id": "",
+          "route_table_id": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": [
+    "subnet",
+    "route_table"
+  ]
+}

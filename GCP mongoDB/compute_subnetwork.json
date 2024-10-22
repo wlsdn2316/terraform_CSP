@@ -1,0 +1,98 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/compute_subnetwork.png",
+  "provider": "gcp",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "네트워크 서비스",
+  "resource_id": "rsc-35",
+  "resource_name": "compute_subnetwork",
+  "resource_type": "compute_subnetwork",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "compute_subnetwork",
+          "resource_name": "compute_subnetwork",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the subnetwork.",
+              "immutable": "false"
+            }
+          },
+          "ip_cidr_range": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The IP CIDR range of the subnetwork.",
+              "immutable": "false"
+            }
+          },
+          "region": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The region where the subnetwork is located.",
+              "immutable": "false"
+            }
+          },
+          "network": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "compute_network",
+              "description": "The network ID the subnetwork belongs to.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 35,
+  "terraform_code": "resource \"google_compute_subnetwork\" \"\" {\n  name = \"my-subnetwork\"\n  ip_cidr_range = \"10.0.0.0/16\"\n  region = \"asia-northeast3\"\n  network = google_compute_network..id\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "compute_subnetwork",
+        "resource_name": "compute_subnetwork",
+        "value": {
+          "name": "my-subnetwork",
+          "ip_cidr_range": "10.0.0.0/16",
+          "region": "asia-northeast3",
+          "network": ""
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "compute_network"
+  ]
+}

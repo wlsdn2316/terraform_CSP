@@ -1,0 +1,108 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da11"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-7025b8c87722",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/route.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-19",
+  "resource_name": "Route",
+  "resource_type": "route",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "route",
+          "resource_name": "Route",
+          "type": "single"
+        },
+        "value": {
+          "route_table_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "route_table",
+              "description": "The ID of the route table for the route.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "destination_cidr_block": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The CIDR block for the route.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "gateway_id": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "internet_gateway",
+              "description": "The ID of the internet gateway.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "nat_gateway_id": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "nat_gateway",
+              "description": "The ID of the NAT gateway.",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 18,
+  "terraform_code": "resource \"aws_route\" \"\" {\n  route_table_id = aws_route_table..id\n  destination_cidr_block = \"0.0.0.0/0\"\n  gateway_id = aws_internet_gateway..id\n  nat_gateway_id = aws_nat_gateway..id\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "route",
+        "resource_name": "Route",
+        "value": {
+          "route_table_id": "",
+          "destination_cidr_block": "0.0.0.0/0",  
+          "gateway_id": "",
+          "nat_gateway_id": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": [
+    "route_table",
+    "internet_gateway",
+    "nat_gateway"
+  ]
+}

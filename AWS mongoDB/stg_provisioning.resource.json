@@ -1,0 +1,2919 @@
+[{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9f1"
+  },
+  "domain_id": "domain-9dae4c8bc793",
+  "provider": "aws",
+  "resource_id": "rsc-1",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅서비스",
+  "resource_name": "ec2",
+  "resource_type": "instance",
+  "terraform_code": "resource \"aws_instance\" \"\" {\n  ami = \"\"\n  instance_type = \"\"\n  subnet_id = aws_subnet..id\n  vpc_security_group_ids = [aws_security_group..id]\n  iam_instance_profile = aws_iam_instance_profile..id\n  root_block_device {\n    volume_size = \"\"\n    volume_type = \"\"\n    delete_on_termination = \n  }\n}",
+  "ansible_code": "",
+  "valid_value": [
+    "subnet",
+    "lib_data_subnet",
+    "security_group",
+    "iam_instance_profile"
+  ],
+  "ansible_properties": {},
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "instance",
+          "resource_name": "ec2",
+          "type": "single"
+        },
+        "value": {
+          "ami": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": "true"
+            }
+          },
+          "instance_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "t2.nano"
+                },
+                {
+                  "value": "t2.micro"
+                },
+                {
+                  "value": "t2.small"
+                },
+                {
+                  "value": "t2.medium"
+                },
+                {
+                  "value": "t2.large"
+                },
+                {
+                  "value": "t2.xlarge"
+                },
+                {
+                  "value": "t2.2xlarge"
+                },
+                {
+                  "value": "m5.large"
+                },
+                {
+                  "value": "m5.xlarge"
+                },
+                {
+                  "value": "m5.2xlarge"
+                },
+                {
+                  "value": "m5.4xlarge"
+                },
+                {
+                  "value": "m5.8xlarge"
+                },
+                {
+                  "value": "m5.12xlarge"
+                },
+                {
+                  "value": "m5.16xlarge"
+                },
+                {
+                  "value": "m5.24xlarge"
+                },
+                {
+                  "value": "m5.metal"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "subnet_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "subnet",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "vpc_security_group_ids": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "security_group",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "iam_instance_profile": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "iam_instance_profile",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "root_block_device": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "volume_size": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "GB",
+                    "immutable": ""
+                  }
+                },
+                "volume_type": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "gp2"
+                      },
+                      {
+                        "value": "gp3"
+                      }
+                    ],
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "delete_on_termination": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "boolean",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "true"
+                      },
+                      {
+                        "value": "false"
+                      }
+                    ],
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "ebs_volume",
+          "resource_name": "EBS",
+          "type": "subArray"
+        },
+        "value": {
+          "availability_zone": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "ap-northeast-2a"
+                },
+                {
+                  "value": "ap-northeast-2b"
+                },
+                {
+                  "value": "ap-northeast-2c"
+                },
+                {
+                  "value": "ap-northeast-2d"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "size": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "GB",
+              "immutable": ""
+            }
+          },
+          "type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "gp2"
+                },
+                {
+                  "value": "gp3"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "volume_attachment",
+          "resource_name": "EBS_Volume_Attachment",
+          "type": "arraySet",
+          "array_target": "ebs_volume"
+        },
+        "value": {
+          "device_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "volume_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "link_target": "parent",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "instance_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "link_target": "instance",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "img_src": "https://spaceone-custom-assets.s3.ap-northeast-2.amazonaws.com/console-assets/icons/aws-ec2.svg",
+  "sort_order": 1,
+  "created_by": "user1@test.com",
+  "updated_by": "user1@test.com",
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "instance",
+        "resource_name": "ec2",
+        "value": {
+          "ami": "",
+          "instance_type": "",
+          "subnet_id": "",
+          "iam_instance_profile": "",
+          "vpc_security_group_ids": [],
+          "root_block_device_volume_size": "",
+          "root_block_device": {
+            "volume_size": "50",
+            "volume_type": "gp2",
+            "delete_on_termination": "true"
+          },
+          "ebs_block_device": {
+            "device_name": "/dev/sdf",
+            "volume_size": "50",
+            "volume_type": "gp3",
+            "delete_on_termination": "false"
+          }
+        },
+        "tags": {}
+      },
+      {
+        "resource_type": "ebs_volume",
+        "resource_name": "EBS",
+        "value": {
+          "availability_zone": "",
+          "size": "50",
+          "type": ""
+        },
+        "tags": {}
+      },
+      {
+        "resource_type": "volume_attachment",
+        "resource_name": "EBS_Volume_Attachment",
+        "value": {
+          "device_name": "",
+          "volume_id": "",
+          "instance_id": ""
+        }
+      }
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9f2"
+  },
+  "domain_id": "domain-9dae4c8bc793",
+  "provider": "aws",
+  "resource_id": "rsc-2",
+  "resource_group_id": "rsc-grp-4",
+  "resource_group_name": "스토리지",
+  "resource_name": "S3",
+  "resource_type": "s3",
+  "terraform_code": "resource \"aws_s3_bucket\" \"\" {\n  'bucket' = \"\"\n}",
+  "ansible_code": "",
+  "valid_value": [],
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "s3_bucket",
+        "resource_name": "S3",
+        "value": {
+          "bucket": ""
+        },
+        "tags": {}
+      },
+      {
+        "resource_type": "s3_bucket_public_access_block",
+        "resource_name": "S3_Access_Block",
+        "value": {
+          "bucket": "",
+          "block_public_acls": "",
+          "ignore_public_acls": "",
+          "block_public_policy": "",
+          "restrict_public_buckets": ""
+        }
+      },
+      {
+        "resource_type": "s3_bucket_ownership_controls",
+        "resource_name": "S3_Ownership_Controls",
+        "value": {
+          "bucket": "",
+          "rule": {
+            "object_ownership": ""
+          }
+        }
+      }
+    ]
+  },
+  "ansible_properties": {},
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "s3_bucket",
+          "resource_name": "S3",
+          "type": "single"
+        },
+        "value": {
+          "bucket": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "s3_bucket_public_access_block",
+          "resource_name": "S3_Access_Block",
+          "type": "single"
+        },
+        "value": {
+          "bucket": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "link_target": "s3_bucket",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "block_public_acls": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "block_public_policy": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "restrict_public_buckets": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "s3_bucket_ownership_controls",
+          "resource_name": "S3_Ownership_Controls",
+          "type": "single"
+        },
+        "value": {
+          "bucket": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "link_target": "s3_bucket",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "rule": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "object_ownership": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "BucketOwnerEnforced"
+                      },
+                      {
+                        "value": "BucketOwnerPreferred"
+                      }
+                    ],
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "img_src": "https://spaceone-custom-assets.s3.ap-northeast-2.amazonaws.com/console-assets/icons/cloud-services/aws/Amazon-S3.svg",
+  "sort_order": 8,
+  "created_by": "user1@test.com",
+  "updated_by": "user1@test.com",
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9f3"
+  },
+  "domain_id": "domain-9dae4c8bc793",
+  "provider": "aws",
+  "resource_id": "rsc-3",
+  "resource_group_id": "rsc-grp-3",
+  "resource_group_name": "보안",
+  "resource_name": "Security_Group",
+  "resource_type": "security_group",
+  "terraform_code": "",
+  "ansible_code": "",
+  "valid_value": [
+    "vpc",
+    "lib_data_vpc"
+  ],
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "security_group",
+        "resource_name": "Security_Group",
+        "value": {
+          "vpc_id": "",
+          "ingress": [
+            {
+              "from_port": "3306",
+              "to_port": "3306",
+              "protocol": "tcp",
+              "cidr_blocks": ""
+            },
+            {
+              "from_port": "22",
+              "to_port": "22",
+              "protocol": "tcp",
+              "cidr_blocks": "[\"0.0.0.0/0\"]"
+            }
+          ],
+          "egress": [
+            {
+              "from_port": "0",
+              "to_port": "0",
+              "protocol": "tcp",
+              "cidr_blocks": ""
+            }
+          ]
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "ansible_properties": {},
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "security_group",
+          "resource_name": "Security_Group",
+          "type": "single"
+        },
+        "value": {
+          "vpc_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "vpc",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "ingress": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "objectArray",
+              "child": {
+                "from_port": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "to_port": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "protocol": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "tcp"
+                      },
+                      {
+                        "value": "udp"
+                      },
+                      {
+                        "value": "icmp"
+                      },
+                      {
+                        "value": "any"
+                      }
+                    ],
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "cidr_blocks": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "false",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          },
+          "egress": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "objectArray",
+              "child": {
+                "from_port": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "to_port": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "protocol": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "tcp"
+                      },
+                      {
+                        "value": "udp"
+                      },
+                      {
+                        "value": "icmp"
+                      },
+                      {
+                        "value": "any"
+                      }
+                    ],
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "cidr_blocks": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "false",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "img_src": "/images/resource/security_group.png",
+  "sort_order": 5,
+  "created_by": "user1@test.com",
+  "updated_by": "user1@test.com",
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9f4"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "https://spaceone-custom-assets.s3.ap-northeast-2.amazonaws.com/console-assets/icons/cloud-services/aws/Amazon-VPC.svg",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-4",
+  "resource_name": "VPC",
+  "resource_type": "vpc",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "vpc",
+          "resource_name": "VPC",
+          "type": "single"
+        },
+        "value": {
+          "cidr_block": {
+            "validation": [
+              {
+                "required": "true",
+                "regex": ""
+              }
+            ],
+            "data": {
+              "type": "input",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 2,
+  "terraform_code": "resource \"aws_vpc\" \"\" {\n  cidr_block = \"\"\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "vpc",
+        "resource_name": "VPC",
+        "value": {
+          "cidr_block": ""
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": []
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9f5"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "/images/resource/subnet.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-5",
+  "resource_name": "Subnet",
+  "resource_type": "subnet",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "subnet",
+          "resource_name": "Subnet",
+          "type": "single"
+        },
+        "value": {
+          "vpc_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "vpc",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "cidr_block": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "availability_zone": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "ap-northeast-2a"
+                },
+                {
+                  "value": "ap-northeast-2b"
+                },
+                {
+                  "value": "ap-northeast-2c"
+                },
+                {
+                  "value": "ap-northeast-2c"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "map_public_ip_on_launch": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 3,
+  "terraform_code": "resource \"aws_subnet\" \"\" {\n  vpc_id = aws_vpc..id\n  cidr_block = \"\"\n  availability_zone = \"\"\n  map_public_ip_on_launch = false\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "subnet",
+        "resource_name": "Subnet",
+        "value": {
+          "vpc_id": "",
+          "cidr_block": "",
+          "availability_zone": "",
+          "map_public_ip_on_launch": "false"
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": [
+    "vpc",
+    "lib_data_vpc"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9f6"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "/images/resource/internet_gateway.svg",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-6",
+  "resource_name": "Internet_Gateway",
+  "resource_type": "internet_gateway",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "internet_gateway",
+          "resource_name": "Internet_Gateway",
+          "type": "single"
+        },
+        "value": {
+          "vpc_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "vpc",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 4,
+  "terraform_code": "resource \"aws_internet_gateway\" \"\" {\n  vpc_id = aws_vpc..id\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "internet_gateway",
+        "resource_name": "Internet_Gateway",
+        "value": {
+          "vpc_id": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": [
+    "vpc",
+    "lib_data_vpc"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9f7"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "/images/resource/alb.svg",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-5",
+  "resource_group_name": "로드밸런서",
+  "resource_id": "rsc-7",
+  "resource_name": "ALB",
+  "resource_type": "lb",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "lb",
+          "resource_name": "ALB",
+          "type": "single"
+        },
+        "value": {
+          "load_balancer_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "internal": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "subnets": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "subnet",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "security_groups": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "security_group",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "lb_listener",
+          "resource_name": "ALB_Listener",
+          "type": "single"
+        },
+        "value": {
+          "load_balancer_arn": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "link_target": "lb",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "port": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "protocol": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "HTTP"
+                },
+                {
+                  "value": "HTTPS"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "default_action": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "type": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "target_group_arn": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "link_target": "lb_target_group",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 6,
+  "terraform_code": "resource \"aws_lb\" \"\" {\n  load_balancer_type = \"application\"\n  name = \"\"\n  internal =\n  subnets = [aws_subnet..id, aws_subnet..id]\n  security_groups = [aws_security_group..id]\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "lb",
+        "resource_name": "ALB",
+        "value": {
+          "load_balancer_type": "application",
+          "name": "",
+          "internal": "",
+          "subnets": [],
+          "security_groups": []
+        },
+        "tags": {}
+      },
+      {
+        "resource_type": "lb_listener",
+        "resource_name": "ALB_Listener",
+        "value": {
+          "load_balancer_arn": "",
+          "port": "",
+          "protocol": "",
+          "default_action": {
+            "type": "",
+            "target_group_arn": ""
+          }
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": [
+    "subnet",
+    "lib_data_subnet",
+    "security_group",
+    "lb_target_group"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9f8"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "/images/resource/target_group.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-5",
+  "resource_group_name": "로드밸런서",
+  "resource_id": "rsc-8",
+  "resource_name": "Target_Group",
+  "resource_type": "lb_target_group",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "lb_target_group",
+          "resource_name": "Target_Group",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "target_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "instance"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "protocol": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "HTTP"
+                },
+                {
+                  "value": "HTTPS"
+                },
+                {
+                  "value": "TCP"
+                },
+                {
+                  "value": "TPC_UD"
+                },
+                {
+                  "value": "TLS"
+                },
+                {
+                  "value": "UTP"
+                },
+                {
+                  "value": "GENEVE"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "port": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "vpc_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "vpc",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "health_check": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "protocol": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "HTTP",
+                        "dynamic_check": {
+                          "target_depth_1": "protocol",
+                          "value": [
+                            "HTTP",
+                            "HTTPS",
+                            ""
+                          ]
+                        }
+                      },
+                      {
+                        "value": "HTTPS",
+                        "dynamic_check": {
+                          "target_depth_1": "protocol",
+                          "value": [
+                            "HTTP",
+                            "HTTPS",
+                            ""
+                          ]
+                        }
+                      },
+                      {
+                        "value": "TCP",
+                        "dynamic_check": {
+                          "target_depth_1": "protocol",
+                          "value": [
+                            "HTTP",
+                            "HTTPS",
+                            "TCP",
+                            "TPC_UD",
+                            "TLS",
+                            "UTP",
+                            "GENEVE",
+                            ""
+                          ]
+                        }
+                      }
+                    ],
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "path": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "matcher": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "static",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "interval": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "static",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "timeout": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "static",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "healthy_threshold": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "static",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "unhealthy_threshold": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "static",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "lb_target_group_attachment",
+          "resource_name": "Target_Group_Attachment",
+          "type": "array"
+        },
+        "value": {
+          "target_group_arn": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "link_target": "lb_target_group",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "target_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "instance",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "port": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 7,
+  "terraform_code": "resource \"aws_lb_target_group\" \"\" {\n  name = \"\"\n  target_type = \"\"  \n  protocol = \"\" \n  port     = \n  vpc_id   = aws_vpc..id\n  health_check {\n    path = \"\"\n    protocol = \"\"\n    matcher = \"200\"\n    interval = 5\n    timeout = 3\n    healthy_threshold =  2\n    unhealthy_threshold = 2\n  }\n}\n\n",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "lb_target_group",
+        "resource_name": "Target_Group",
+        "value": {
+          "name": "",
+          "target_type": "",
+          "protocol": "",
+          "port": "",
+          "vpc_id": "",
+          "health_check": {
+            "protocol": "HTTP",
+            "path": "/",
+            "matcher": "200",
+            "interval": 5,
+            "timeout": 3,
+            "healthy_threshold": 2,
+            "unhealthy_threshold": 2
+          }
+        },
+        "tags": {}
+      },
+      {
+        "resource_type": "lb_target_group_attachment",
+        "resource_name": "Target_Group_Attachment",
+        "value": {
+          "target_group_arn": "",
+          "target_id": "",
+          "port": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": [
+    "vpc",
+    "lib_data_vpc",
+    "instance"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9f9"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "/images/resource/iam.svg",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "인증 및 권한",
+  "resource_id": "rsc-9",
+  "resource_name": "Instance_Profile",
+  "resource_type": "iam_instance_profile",
+  "resource_type_properties": null,
+  "sort_order": 8,
+  "terraform_code": "resource \"aws_iam_role\" \"SSM_default\" {\n  name_prefix = \"SSM\"\n  path = \"/\"\n  assume_role_policy = data.aws_iam_policy_document.SSM.json\n}\n\ndata \"aws_iam_policy_document\" \"SSM\" {\n  statement {\n    effect = \"Allow\"\n\n    principals {\n      type        = \"Service\"\n      identifiers = [\"ec2.amazonaws.com\"]\n    }\n\n    actions = [\"sts:AssumeRole\"]\n  }\n}\n\nresource \"aws_iam_instance_profile\" \"SSM\" {\n  name_prefix = \"SSM\"\n  role = aws_iam_role.SSM_default.id\n}\n\ndata \"aws_iam_policy\" \"AmazonEC2RoleforSSM\" {\n  arn = \"arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM\"\n}\ndata \"aws_iam_policy\" \"AmazonS3FullAccess\" {\n  arn = \"arn:aws:iam::aws:policy/AmazonS3FullAccess\"\n}\ndata \"aws_iam_policy\" \"CloudWatchAgentServerPolicy\" {\n  arn = \"arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy\"\n}\n\nresource \"aws_iam_role_policy_attachment\" \"cloudwiz-attachment-role-policy-1\" {\n  role       = aws_iam_role.SSM_default.id\n  policy_arn = data.aws_iam_policy.AmazonEC2RoleforSSM.arn\n}\nresource \"aws_iam_role_policy_attachment\" \"cloudwiz-attachment-role-policy-2\" {\n  role       = aws_iam_role.SSM_default.id\n  policy_arn = data.aws_iam_policy.AmazonS3FullAccess.arn\n}\nresource \"aws_iam_role_policy_attachment\" \"cloudwiz-attachment-role-policy-3\" {\n  role       = aws_iam_role.SSM_default.id\n  policy_arn = data.aws_iam_policy.CloudWatchAgentServerPolicy.arn\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "iam_instance_profile",
+        "resource_name": "SSM"
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": []
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9fa"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "/images/resource/alb.svg",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-5",
+  "resource_group_name": "로드밸런서",
+  "resource_id": "rsc-10",
+  "resource_name": "NLB",
+  "resource_type": "nlb",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "nlb",
+          "resource_name": "NLB",
+          "type": "single"
+        },
+        "value": {
+          "load_balancer_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "internal": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "enable_cross_zone_load_balancing": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "subnets": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "subnet",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "security_groups": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "security_group",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "nlb_listener",
+          "resource_name": "NLB_Listener",
+          "type": "single"
+        },
+        "value": {
+          "load_balancer_arn": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "link_target": "nlb",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "port": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "protocol": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "TCP"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "default_action": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "type": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "target_group_arn": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "link_target": "lb_target_group",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 9,
+  "terraform_code": "resource \"aws_lb\" \"\" {\n  load_balancer_type = \"network\"\n  name = \"\"\n  internal =\n  enable_cross_zone_load_balancing = true\n  subnets = [aws_subnet..id, aws_subnet..id]\n  security_groups = [aws_security_group..id]\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "nlb",
+        "resource_name": "NLB",
+        "value": {
+          "load_balancer_type": "network",
+          "name": "",
+          "internal": "",
+          "enable_cross_zone_load_balancing": "",
+          "subnets": [],
+          "security_groups": []
+        },
+        "tags": {}
+      },
+      {
+        "resource_type": "nlb_listener",
+        "resource_name": "NLB_Listener",
+        "value": {
+          "load_balancer_arn": "",
+          "port": "",
+          "protocol": "",
+          "default_action": {
+            "type": "",
+            "target_group_arn": ""
+          }
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": [
+    "subnet",
+    "lib_data_subnet",
+    "security_group",
+    "nlb_target_group"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9fb"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "/images/resource/target_group.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-5",
+  "resource_group_name": "로드밸런서",
+  "resource_id": "rsc-11",
+  "resource_name": "NLB_Target_Group",
+  "resource_type": "nlb_target_group",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "nlb_target_group",
+          "resource_name": "NLB_Target_Group",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "target_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "instance"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "protocol": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "TCP"
+                }
+              ],
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "port": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "vpc_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "vpc",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "nlb_target_group_attachment",
+          "resource_name": "NLB_Target_Group_Attachment",
+          "type": "array"
+        },
+        "value": {
+          "target_group_arn": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "link_target": "nlb_target_group",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "target_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "instance",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "port": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 10,
+  "terraform_code": "resource \"aws_lb_target_group\" \"\" {\n  name = \"\"\n  target_type = \"\"  \n  protocol = \"\" \n  port     = \n  vpc_id   = aws_vpc..id\n}\n",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "nlb_target_group",
+        "resource_name": "NLB_Target_Group",
+        "value": {
+          "name": "",
+          "target_type": "",
+          "protocol": "",
+          "port": "",
+          "vpc_id": ""
+        },
+        "tags": {}
+      },
+      {
+        "resource_type": "nlb_target_group_attachment",
+        "resource_name": "NLB_Target_Group_Attachment",
+        "value": {
+          "target_group_arn": "",
+          "target_id": "",
+          "port": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": [
+    "vpc",
+    "lib_data_vpc",
+    "instance"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9fc"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "https://spaceone-custom-assets.s3.ap-northeast-2.amazonaws.com/console-assets/icons/cloud-services/aws/Amazon-VPC.svg",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "라이브러리",
+  "resource_id": "rsc-12",
+  "resource_name": "VPC",
+  "resource_type": "lib_data_vpc",
+  "resource_type_properties": null,
+  "sort_order": 12,
+  "terraform_code": "data \"aws_vpc\" \"\" {\n    tags = {\n        name = \"\"\n    }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "lib_data_vpc",
+        "resource_name": "VPC",
+        "tags": {
+          "Name": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": []
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9fd"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "/images/resource/subnet.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "라이브러리",
+  "resource_id": "rsc-13",
+  "resource_name": "Subnet",
+  "resource_type": "lib_data_subnet",
+  "sort_order": 13,
+  "terraform_code": "data \"aws_subnet\" \"\" {\n    tags = {\n        name = \"\"\n    }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "lib_data_subnet",
+        "resource_name": "Subnet",
+        "tags": {
+          "Name": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": [
+    "lib_data_vpc"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9fe"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "/images/resource/internet_gateway.svg",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "라이브러리",
+  "resource_id": "rsc-14",
+  "resource_name": "Internet_Gateway",
+  "resource_type": "lib_data_internet_gateway",
+  "resource_type_properties": null,
+  "sort_order": 14,
+  "terraform_code": "data \"aws_internet_gateway\" \"\" {\n    tags = {\n        name = \"\"\n    }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "lib_data_internet_gateway",
+        "resource_name": "Internet_Gateway",
+        "tags": {
+          "Name": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": [
+    "lib_data_vpc"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190d9ff"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "/images/resource/efs_file_system.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-4",
+  "resource_group_name": "스토리지",
+  "resource_id": "rsc-15",
+  "resource_name": "EFS",
+  "resource_type": "efs_file_system",
+  "sort_order": 11,
+  "terraform_code": "resource \"aws_efs_file_system\" \"\" {\n}\n\nresource \"aws_efs_mount_target\" \"\" {\n  file_system_id = aws_efs_file_system..id\n  subnet_id      = aws_subnet..id\n}",
+  "updated_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": [
+    "subnet",
+    "lib_data_subnet"
+  ],
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "efs_file_system",
+          "resource_name": "EFS",
+          "type": "single"
+        },
+        "value": {}
+      },
+      {
+        "resource": {
+          "resource_type": "efs_mount_target",
+          "resource_name": "EFS_Mount_Target",
+          "type": "single"
+        },
+        "value": {
+          "file_system_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "link_target": "efs_file_system",
+              "copied":                                                                                                                                                                                                                                                                                        "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "subnet_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "subnet",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "efs_file_system",
+        "resource_name": "EFS",
+        "value": {}
+      },
+      {
+        "resource_type": "efs_mount_target",
+        "resource_name": "EFS_Mount_Target",
+        "value": {
+          "file_system_id": "",
+          "subnet_id": ""
+        }
+      }
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da01"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-08-23T02:55:27.844Z"
+  },
+  "created_by": "user1@test.com",
+  "domain_id": "domain-9dae4c8bc793",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/auto-scaling-group.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅서비스",
+  "resource_id": "rsc-16",
+  "resource_name": "Autoscaling",
+  "resource_type": "autoscaling",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "autoscaling_group",
+          "resource_name": "Autoscaling_Group",
+          "type": "single"
+        },
+        "value": {
+          "launch_template": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "version": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          },
+          "min_size": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "max_size": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "desired_capacity": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "vpc_zone_identifier": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "false",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "tag": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "key": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "value": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "propagate_at_launch": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "boolean",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "true"
+                      },
+                      {
+                        "value": "false"
+                      }
+                    ],
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "autoscaling_policy",
+          "resource_name": "Autoscaling_Policy",
+          "type": "array"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "scaling_adjustment": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "adjustment_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "cooldown": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "autoscaling_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "policy_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "cloudwatch_metric_alarm",
+          "resource_name": "Cloudwatch_Metric_Alarm",
+          "type": "arraySet"
+        },
+        "value": {
+          "alarm_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "comparison_operator": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "evaluation_periods": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "metric_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "namespace": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "period": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "statistic": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "threshold": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "alarm_actions": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "dimensions": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "AutoScalingGroupName": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 15,
+  "terraform_code": "resource \"aws_autoscaling_group\" \"\" {\n  launch_template {\n    id      = aws_launch_template..id\n    version = \"\"\n  }\n\n  min_size         = \n  max_size         = \n  desired_capacity = \n  vpc_zone_identifier = [aws_subnet..id]\n\n  tag {\n    key                 = \"\"\n    value               = \"\"\n    propagate_at_launch = \n  }\n}\n\nresource \"aws_autoscaling_policy\" \"\" {\n  name                   = \"\"\n  scaling_adjustment     = \n  adjustment_type        = \"\"\n  cooldown               = \n  autoscaling_group_name = aws_autoscaling_group..name\n  policy_type = \"\"\n}\n\nresource \"aws_cloudwatch_metric_alarm\" \"\" {\n  alarm_name          = \"\"\n  comparison_operator = \"\"\n  evaluation_periods  = \"\"\n  metric_name         = \"\"\n  namespace           = \"\"\n  period              = \n  statistic           = \"\"\n  threshold           = \n  alarm_actions       = [aws_autoscaling_policy..arn]\n\n  dimensions = {\n    AutoScalingGroupName = aws_autoscaling_group..name\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "autoscaling_group",
+        "resource_name": "Autoscaling_Group",
+        "value": {
+          "launch_template": {
+            "id": "",
+            "version": ""
+          },
+          "min_size": "",
+          "max_size": "",
+          "desired_capacity": "",
+          "vpc_zone_identifier": "",
+          "tag": {
+            "key": "",
+            "value": "",
+            "propagate_at_launch": ""
+          }
+        }
+      },
+      {
+        "resource_type": "autoscaling_policy",
+        "resource_name": "Autoscaling_Policy",
+        "value": {
+          "name": "",
+          "scaling_adjustment": "",
+          "adjustment_type": "",
+          "cooldown": "",
+          "autoscaling_group_name": "",
+          "policy_type": ""
+        }
+      },
+      {
+        "resource_type": "cloudwatch_metric_alarm",
+        "resource_name": "Cloudwatch_Metric_Alarm",
+        "value": {
+          "alarm_name": "",
+          "comparison_operator": "",
+          "evaluation_periods": "",
+          "metric_name": "",
+          "namespace": "",
+          "period": "",
+          "statistic": "",
+          "threshold": "",
+          "alarm_actions": "",
+          "dimensions": {
+            "AutoScalingGroupName": ""
+          }
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-11-30T09:55:27.844Z"
+  },
+  "updated_by": "user1@test.com",
+  "valid_value": [
+    "subnet",
+    "lib_data_subnet"
+  ]
+}]

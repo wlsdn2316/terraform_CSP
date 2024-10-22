@@ -1,0 +1,168 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/compute_instance.png",
+  "provider": "gcp",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅 서비스",
+  "resource_id": "rsc-38",
+  "resource_name": "compute_instance",
+  "resource_type": "compute_instance",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "compute_instance",
+          "resource_name": "compute_instance",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the compute instance.",
+              "immutable": "false"
+            }
+          },
+          "machine_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The machine type of the instance.",
+              "immutable": "false"
+            }
+          },
+          "zone": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The zone where the instance is located.",
+              "immutable": "false"
+            }
+          },
+          "boot_disk": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "initialize_params": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputObject",
+                    "description": "Initialization parameters for the boot disk.",
+                    "immutable": "false"
+                  }
+                }
+              },
+              "description": "Boot disk configuration for the instance.",
+              "immutable": "false"
+            }
+          },
+          "network_interface": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "network": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "link_target": "compute_network",
+                    "description": "The network ID the instance belongs to.",
+                    "immutable": "false"
+                  }
+                },
+                "subnetwork": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "link_target": "compute_subnetwork",
+                    "description": "The subnetwork ID the instance belongs to.",
+                    "immutable": "false"
+                  }
+                },
+                "access_config": {
+                  "validation": {
+                    "required": "false",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "Access configuration for the network interface.",
+                    "immutable": "false"
+                  }
+                }
+              },
+              "description": "Network interface configuration for the instance.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 38,
+  "terraform_code": "resource \"google_compute_instance\" \"default\" {\n  name = \"my-instance\"\n  machine_type = \"e2-medium\"\n  zone = \"asia-northeast3-a\"\n\n  boot_disk {\n    initialize_params {\n      image = \"debian-cloud/debian-10\"\n    }\n  }\n\n  network_interface {\n    network = google_compute_network..id\n    subnetwork = google_compute_subnetwork..id\n    access_config {\n    }\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "compute_instance",
+        "resource_name": "compute_instance",
+        "value": {
+          "name": "my-instance",
+          "machine_type": "e2-medium",
+          "zone": "asia-northeast3-a",
+          "boot_disk": {
+            "initialize_params": {
+              "image": "debian-cloud/debian-10"
+            }
+          },
+          "network_interface": {
+            "network": "",
+            "subnetwork": "",
+            "access_config": {}
+          }
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "compute_network",
+    "compute_subnetwork"
+  ]
+}

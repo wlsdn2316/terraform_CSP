@@ -1,0 +1,95 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/compute_disk.png",
+  "provider": "gcp",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "스토리지 서비스",
+  "resource_id": "rsc-39",
+  "resource_name": "compute_disk",
+  "resource_type": "compute_disk",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "compute_disk",
+          "resource_name": "compute_disk",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the disk.",
+              "immutable": "false"
+            }
+          },
+          "type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The type of the disk.",
+              "immutable": "false"
+            }
+          },
+          "zone": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The zone where the disk is located.",
+              "immutable": "false"
+            }
+          },
+          "size": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The size of the disk in GB.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 39,
+  "terraform_code": "resource \"google_compute_disk\" \"\" {\n  name = \"my-disk\"\n  type = \"pd-standard\"\n  zone = \"asia-northeast3-a\"\n  size = 100\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "compute_disk",
+        "resource_name": "compute_disk",
+        "value": {
+          "name": "my-disk",
+          "type": "pd-standard",
+          "zone": "asia-northeast3-a",
+          "size": 100
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": []
+}

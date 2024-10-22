@@ -1,0 +1,124 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da10"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2023-11-30T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-7025b8c87722",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/elastic_network_interface.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-18",
+  "resource_name": "Network_Interface",
+  "resource_type": "network_interface",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "network_interface",
+          "resource_name": "Network_Interface",
+          "type": "single"
+        },
+        "value": {
+          "subnet_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "subnet",
+              "description": "The ID of the subnet to associate with the network interface.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "security_groups": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "security_group",
+              "description": "A list of security group IDs to associate with the network interface.",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "attachment": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "instance": {
+                  "validation": {
+                    "required": "false",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "link_target": "instance",
+                    "description": "The ID of the instance to which the network interface will be attached.",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                },
+                "device_index": {
+                  "validation": {
+                    "required": "false",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The device index for the attachment of the network interface to the instance.",
+                    "item_description": "",
+                    "immutable": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 17,
+  "terraform_code": "resource \"aws_network_interface\" \"\" {\n  subnet_id = aws_subnet..id\n  security_groups = aws_security_group..id\n\n  attachment {\n    instance = aws_instance..id\n    device_index = \"1\"\n  }\n}"
+  ,
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "network_interface",
+        "resource_name": "Network_Interface",
+        "value": {
+          "subnet_id": "",
+          "security_groups": "",
+          "attachment": {
+            "instance": "",
+            "device_index": "1"
+          }
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2023-11-30T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": [
+    "subnet",
+    "lib_data_subnet",
+    "security_group",
+    "instance"
+  ]
+}

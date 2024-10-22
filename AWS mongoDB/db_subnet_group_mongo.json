@@ -1,0 +1,78 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da15"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-7025b8c87722",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/db_subnet_group.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-9",
+  "resource_group_name": "데이터베이스",
+  "resource_id": "rsc-23",
+  "resource_name": "DB_Subnet_Group",
+  "resource_type": "db_subnet_group",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "db_subnet_group",
+          "resource_name": "DB_Subnet_Group",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the DB subnet group.",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "subnet_ids": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "subnet",
+              "copied": "false",
+              "description": "A list of VPC subnet IDs for the DB subnet group.",
+              "item_description": "",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 22,
+  "terraform_code": "resource \"aws_db_subnet_group\" \"\" {\n  name = \"my-db-subnet-group\"\n  subnet_ids = [\"${aws_subnet.example1.id}\", \"${aws_subnet.example2.id}\"]\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "db_subnet_group",
+        "resource_name": "DB_Subnet_Group",
+        "value": {
+          "name": "db-subnet-group",
+          "subnet_ids": ["${aws_subnet.example1.id}", "${aws_subnet.example2.id}"]
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": ["subnet"]
+}

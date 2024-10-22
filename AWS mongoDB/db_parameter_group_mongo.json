@@ -1,0 +1,119 @@
+{
+  "_id": {
+    "$oid": "64e5751f422fb561d190da16"
+  },
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-7025b8c87722",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets/db_parameter_group.png",
+  "provider": "aws",
+  "resource_group_id": "rsc-grp-9",
+  "resource_group_name": "데이터베이스",
+  "resource_id": "rsc-24",
+  "resource_name": "DB_Parameter_Group",
+  "resource_type": "db_parameter_group",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "db_parameter_group",
+          "resource_name": "DB_Parameter_Group",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the DB parameter group.",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "family": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The database family of the DB parameter group.",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "parameter": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "objectArray",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "false",
+                    "description": "The name of the parameter.",
+                    "item_description": "",
+                    "immutable": "false"
+                  }
+                },
+                "value": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "false",
+                    "description": "The value of the parameter.",
+                    "item_description": "",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 23,
+  "terraform_code": "resource \"aws_db_parameter_group\" \"\" {\n  name = \"my-db-parameter-group\"\n  family = \"mysql5.7\"\n  parameter {\n    name = \"character_set_server\"\n    value = \"utf8\"\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "db_parameter_group",
+        "resource_name": "DB_Parameter_Group",
+        "value": {
+          "name": "my-db-parameter-group",
+          "family": "mysql5.7",
+          "parameter": [
+            {
+              "name": "character_set_server",
+              "value": "utf8"
+            }
+          ]
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-03-15T09:55:27.844Z"
+  },
+  "updated_by": "cloudwiz-admin@kt.com",
+  "valid_value": []
+}
