@@ -29,49 +29,49 @@ provider "azurerm" {
 variable "client_id" {
   type        = string
   description = "The client ID for the Azure service principal."
-  default     = "ad2eef53-9e1f-4199-a01a-e09e2882b41e"
+  default     = ""
 }
 
 variable "client_secret" {
   type        = string
   description = "The client secret for the Azure service principal."
-  default     = "3v38Q~PNXcXNsXmglir0epyEXbwbk-9aC-0uHbrb"
+  default     = ""
 }
 
 variable "subscription_id" {
   type        = string
   description = "The subscription ID for the Azure account."
-  default     = "64061f25-366b-47a8-af8b-74a88656fbb2"
+  default     = ""
 }
 
 variable "tenant_id" {
   type        = string
   description = "The tenant ID for the Azure account."
-  default     = "e6c9ec09-8430-4a99-bf15-242bc089b409"
+  default     = ""
 }
 
 variable "client_id_vhub" {
   type        = string
   description = "The client ID for the Azure service principal."
-  default     = "ad2eef53-9e1f-4199-a01a-e09e2882b41e"
+  default     = ""
 }
 
 variable "client_secret_vhub" {
   type        = string
   description = "The client secret for the Azure service principal."
-  default     = "3v38Q~PNXcXNsXmglir0epyEXbwbk-9aC-0uHbrb"
+  default     = ""
 }
 
 variable "subscription_id_vhub" {
   type        = string
   description = "The subscription ID for the Azure account."
-  default     = "64061f25-366b-47a8-af8b-74a88656fbb2"
+  default     = ""
 }
 
 variable "tenant_id_vhub" {
   type        = string
   description = "The tenant ID for the Azure account."
-  default     = "e6c9ec09-8430-4a99-bf15-242bc089b409"
+  default     = ""
 }
 
 
