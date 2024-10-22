@@ -1,0 +1,303 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/PostgreSQL_Server.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-9",
+  "resource_group_name": "데이터베이스",
+  "resource_id": "rsc-72",
+  "resource_name": "PostgreSQL_Server",
+  "resource_type": "postgresql_flexible_server",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "postgresql_flexible_server",
+          "resource_name": "PostgreSQL_Server",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "PostgreSQL 서버의 이름",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "location",
+              "description": "PostgreSQL 서버의 위치",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "PostgreSQL 서버가 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          },
+          "version": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "PostgreSQL 서버의 버전",
+              "immutable": "false"
+            }
+          },
+          "administrator_login": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "PostgreSQL 서버의 관리자 로그인 이름",
+              "immutable": "false"
+            }
+          },
+          "administrator_password": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "PostgreSQL 서버의 관리자 비밀번호",
+              "immutable": "false"
+            }
+          },
+          "sku_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "서버의 SKU 이름",
+              "immutable": "false"
+            }
+          },
+          "storage_mb": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "스토리지 크기(MB)",
+              "immutable": "false"
+            }
+          },
+          "delegated_subnet_id": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "subnet",
+              "link_property": "id",
+              "description": "위임된 서브넷의 ID",
+              "immutable": "false"
+            }
+          },
+          "private_dns_zone_id": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "private_dns_zone",
+              "link_property": "id",
+              "description": "프라이빗 DNS 존의 ID",
+              "immutable": "false"
+            }
+          },
+          "public_network_access_enabled": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "공용 네트워크 액세스 허용 여부",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "zone": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "가용성 영역",
+              "item_description": "",
+              "immutable": "false"
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "postgresql_flexible_server_database",
+          "resource_name": "PostgreSQL_Server_Database",
+          "type": "subArray"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "데이터베이스의 이름",
+              "immutable": "false"
+            }
+          },
+          "server_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "copied": "true",
+              "link_target": "postgresql_flexible_server",
+              "link_property": "id",
+              "description": "연결된 PostgreSQL 서버의 ID",
+              "immutable": "false"
+            }
+          },
+          "charset": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "데이터베이스의 문자 집합",
+              "immutable": "false"
+            }
+          },
+          "collation": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "en_US.utf8"
+                },
+                {
+                  "value": "en_US.iso88591"
+                },
+                {
+                  "value": "en_US.iso885915"
+                },
+                {
+                  "value": "de_DE.utf8"
+                }
+              ],
+              "description": "",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 72,
+  "terraform_code": "resource \"azurerm_postgresql_flexible_server\" \"example\" {\n  name                   = \"example-postgresql-flexible-server\"\n  location               = azurerm_resource_group.example.location\n  resource_group_name    = azurerm_resource_group.example.name\n  version                = \"13\"\n  administrator_login    = \"psqladmin\"\n  administrator_password = \"P@ssword1234!\"\n\n  sku_name   = \"GP_Standard_D2s_v3\"\n  storage_mb = 32768\n\n  delegated_subnet_id = azurerm_subnet.example.id\n  private_dns_zone_id = azurerm_private_dns_zone.example.id\n\n  public_network_access_enabled = false\n\n  depends_on = [\n    azurerm_virtual_network.example,\n    azurerm_subnet.example,\n    azurerm_private_dns_zone_virtual_network_link.example\n  ]\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "postgresql_flexible_server",
+        "resource_name": "PostgreSQL_Server",
+        "value": {
+          "name": "",
+          "location": "",
+          "resource_group_name": "",
+          "version": "15",
+          "administrator_login": "ktadmin",
+          "administrator_password": "KTP@sswr0d123!",
+          "sku_name": "GP_Standard_D4ds_v5",
+          "storage_mb": 32768,
+          "delegated_subnet_id": "",
+          "private_dns_zone_id": "",
+          "public_network_access_enabled": false,
+          "zone": "2"
+        }
+      },
+      {
+        "resource_type": "postgresql_flexible_server_database",
+        "resource_name": "PostgreSQL_Server_Database",
+        "value": {
+          "name": "",
+          "server_id": "",
+          "charset": "UTF8",
+          "collation": "en_US.utf8"
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group", "subnet", "private_dns_zone"]
+}

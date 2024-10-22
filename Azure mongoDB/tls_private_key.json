@@ -1,0 +1,81 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/tls_private_key.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "컴퓨팅서비스",
+  "resource_id": "rsc-68",
+  "resource_name": "TLS_Private_Key",
+  "resource_type": "tls_private_key",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "tls_private_key",
+          "resource_name": "TLS_Private_Key",
+          "type": "single"
+        },
+        "value": {
+          "algorithm": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "RSA"
+                },
+                {
+                  "value": "ECDSA"
+                }
+              ],
+              "description": "사용할 알고리즘",
+              "immutable": "false"
+            }
+          },
+          "rsa_bits": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "RSA 키의 크기(비트)",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 68,
+  "terraform_code": "resource \"tls_private_key\" \"example\" {\n  algorithm = \"RSA\"\n  rsa_bits  = 4096\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "tls_private_key",
+        "resource_name": "TLS_Private_Key",
+        "value": {
+          "algorithm": "RSA",
+          "rsa_bits": 4096
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+  ]
+}

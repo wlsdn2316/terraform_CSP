@@ -1,0 +1,138 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/storage_accounts.svg",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "인증 및 권한",
+  "resource_id": "rsc-80",
+  "resource_name": "Storage_Account",
+  "resource_type": "storage_account",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "storage_account",
+          "resource_name": "Storage_Account",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": "^[a-z0-9]{3,24}$"
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "스토리지 계정의 이름 (3-24자의 소문자와 숫자)",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "스토리지 계정이 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "location",
+              "description": "스토리지 계정의 지역",
+              "immutable": "false"
+            }
+          },
+          "account_tier": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "Standard"
+                },
+                {
+                  "value": "Premium"
+                }
+              ],
+              "description": "스토리지 계정의 계층",
+              "immutable": "false"
+            }
+          },
+          "account_replication_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "LRS"
+                },
+                {
+                  "value": "GRS"
+                },
+                {
+                  "value": "ZRS"
+                },
+                {
+                  "value": "RAGRS"
+                }
+              ],
+              "description": "스토리지 계정의 복제 유형",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 80,
+  "terraform_code": "resource \"azurerm_storage_account\" \"storageaccount\" {\n  name                     = staz01dev01\n  resource_group_name      = azurerm_resource_group.rg.name\n  location                 = azurerm_resource_group.rg.location\n  account_tier             = \"Standard\"\n  account_replication_type = \"GRS\"\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "storage_account",
+        "resource_name": "Storage_Account",
+        "value": {
+          "name": "staz01dev01",
+          "resource_group_name": "",
+          "location": "",
+          "account_tier": "Standard",
+          "account_replication_type": "GRS"
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group"]
+}

@@ -1,0 +1,126 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/subscriptions.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-7",
+  "resource_group_name": "구독",
+  "resource_id": "rsc-70",
+  "resource_name": "subscriptions",
+  "resource_type": "subscriptions",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "subscriptions",
+          "resource_name": "subscriptions",
+          "type": "single"
+        },
+        "value": {
+          "alias": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "immutable": "false"
+            }
+          },
+          "features": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "immutable": "false"
+            }
+          },
+          "subscription_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "immutable": "false"
+            }
+          },
+          "tenant_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "immutable": "false"
+            }
+          },
+          "client_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "immutable": "false"
+            }
+          },
+          "client_secret": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 70,
+  "terraform_code": "",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "subscriptions",
+        "resource_name": "subscriptions",
+        "value": {
+          "alias": "",
+          "features": "",
+          "subscription_id": "",
+          "tenant_id": "",
+          "client_id": "",
+          "client_secret": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    ""
+  ]
+}

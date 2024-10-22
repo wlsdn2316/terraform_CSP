@@ -1,0 +1,185 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/route_table.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-59",
+  "resource_name": "Route_table",
+  "resource_type": "route_table",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "route_table",
+          "resource_name": "Route_table",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "라우팅 테이블의 이름.",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "location",
+              "description": "라우팅 테이블의 위치",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "라우팅 테이블이 속할 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          },
+          "disable_bgp_route_propagation": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "BGP 라우트 전파 비활성화 여부",
+              "immutable": "false"
+            }
+          },
+          "route": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "objectArray",
+              "description": "라우트 정의",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "라우트의 이름",
+                    "immutable": "false"
+                  }
+                },
+                "address_prefix": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "라우트 주소 CIDR",
+                    "immutable": "false"
+                  }
+                },
+                "next_hop_type": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "VnetLocal"
+                      },
+                      {
+                        "value": "Internet"
+                      },
+                      {
+                        "value": "VirtualAppliance"
+                      },
+                      {
+                        "value": "None"
+                      }
+                    ],
+                    "description": "다음 홉 유형.",
+                    "immutable": "false"
+                  }
+                },
+                "next_hop_in_ip_address": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "Next hop IP 지정",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 59,
+  "terraform_code": "resource \"azurerm_route_table\" \"main\" {\n  name                          = \"route-table\"\n  location                      = azurerm_resource_group.example.location\n  resource_group_name           = azurerm_resource_group.example.name\n  disable_bgp_route_propagation = false\n\n  route {\n    name           = \"route1\"\n    address_prefix = \"10.1.0.0/16\"\n    next_hop_type  = \"VnetLocal\"\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "route_table",
+        "resource_name": "Route_table",
+        "value": {
+          "name": "route-table",
+          "location": "",
+          "resource_group_name": "",
+          "disable_bgp_route_propagation": false,
+          "route": [
+            {
+              "name": "route1",
+              "address_prefix": "10.1.0.0/16",
+              "next_hop_type": "VnetLocal",
+              "next_hop_in_ip_address": ""
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group", "lib_data_resource_group"]
+}

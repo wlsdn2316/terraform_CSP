@@ -1,0 +1,314 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/virtual_machine.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅 서비스",
+  "resource_id": "rsc-30",
+  "resource_name": "myVM",
+  "resource_type": "azurerm_virtual_machine",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "azurerm_virtual_machine",
+          "resource_name": "myVM",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the virtual machine.",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "description": "The location of the virtual machine.",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "description": "The name of the resource group the virtual machine belongs to.",
+              "immutable": "false"
+            }
+          },
+          "network_interface_ids": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "network_interface",
+              "description": "Network interface IDs associated with the virtual machine.",
+              "immutable": "false"
+            }
+          },
+          "vm_size": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The size of the virtual machine.",
+              "immutable": "false"
+            }
+          },
+          "storage_os_disk": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The name of the OS disk.",
+                    "immutable": "false"
+                  }
+                },
+                "caching": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The caching option for the OS disk.",
+                    "immutable": "false"
+                  }
+                },
+                "create_option": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The create option for the OS disk.",
+                    "immutable": "false"
+                  }
+                },
+                "managed_disk_type": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The managed disk type for the OS disk.",
+                    "immutable": "false"
+                  }
+                }
+              },
+              "description": "OS disk storage configuration.",
+              "immutable": "false"
+            }
+          },
+          "storage_image_reference": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "publisher": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The publisher of the image.",
+                    "immutable": "false"
+                  }
+                },
+                "offer": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The offer of the image.",
+                    "immutable": "false"
+                  }
+                },
+                "sku": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The SKU of the image.",
+                    "immutable": "false"
+                  }
+                },
+                "version": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The version of the image.",
+                    "immutable": "false"
+                  }
+                }
+              },
+              "description": "Image reference for the virtual machine.",
+              "immutable": "false"
+            }
+          },
+          "os_profile": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "computer_name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The computer name for the VM.",
+                    "immutable": "false"
+                  }
+                },
+                "admin_username": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The admin username for the VM.",
+                    "immutable": "false"
+                  }
+                },
+                "admin_password": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The admin password for the VM.",
+                    "immutable": "false"
+                  }
+                }
+              },
+              "description": "OS profile for the virtual machine.",
+              "immutable": "false"
+            }
+          },
+          "os_profile_linux_config": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "disable_password_authentication": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "boolean",
+                    "description": "Disable password authentication for Linux VMs.",
+                    "immutable": "false"
+                  }
+                }
+              },
+              "description": "Linux configuration for the OS profile.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 29,
+  "terraform_code": "resource \"azurerm_virtual_machine\" \"main\" {\n  name                  = \"myVM\"\n  location              = azurerm_resource_group.main.location\n  resource_group_name   = azurerm_resource_group.main.name\n  network_interface_ids = [azurerm_network_interface.main.id]\n  vm_size               = \"Standard_DS1_v2\"\n\n  storage_os_disk {\n    name              = \"myOsDisk\"\n    caching           = \"ReadWrite\"\n    create_option     = \"FromImage\"\n    managed_disk_type = \"Standard_LRS\"\n  }\n\n  storage_image_reference {\n    publisher = \"Canonical\"\n    offer     = \"UbuntuServer\"\n    sku       = \"18.04-LTS\"\n    version   = \"latest\"\n  }\n\n  os_profile {\n    computer_name  = \"hostname\"\n    admin_username = \"adminuser\"\n    admin_password = \"P@ssw0rd1234!\"\n  }\n\n  os_profile_linux_config {\n    disable_password_authentication = false\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "azurerm_virtual_machine",
+        "resource_name": "myVM",
+        "value": {
+          "name": "myVM",
+          "location": "",
+          "resource_group_name": "",
+          "network_interface_ids": [""],
+          "vm_size": "Standard_DS1_v2",
+          "storage_os_disk": {
+            "name": "myOsDisk",
+            "caching": "ReadWrite",
+            "create_option": "FromImage",
+            "managed_disk_type": "Standard_LRS"
+          },
+          "storage_image_reference": {
+            "publisher": "Canonical",
+            "offer": "UbuntuServer",
+            "sku": "18.04-LTS",
+            "version": "latest"
+          },
+          "os_profile": {
+            "computer_name": "hostname",
+            "admin_username": "adminuser",
+            "admin_password": "P@ssw0rd1234!"
+          },
+          "os_profile_linux_config": {
+            "disable_password_authentication": false
+          }
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group", "network_interface"]
+}

@@ -1,0 +1,148 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/subnet.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-78",
+  "resource_name": "Subnet_DB",
+  "resource_type": "subnet",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "subnet",
+          "resource_name": "Subnet_DB",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the subnet.",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group", 
+              "description": "The name of the resource group the subnet belongs to.",
+              "immutable": "false"
+            }
+          },
+          "virtual_network_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "virtual_network",
+              "description": "The name of the virtual network the subnet is part of.",
+              "immutable": "false"
+            }
+          },
+          "address_prefixes": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The address prefixes for the subnet.",
+              "immutable": "false"
+            }
+          },
+          "depends_on": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "description": "삭제 순서 명시",
+              "immutable": "false"
+            }
+          },
+          "delegation": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "",
+                    "immutable": "false"
+                  }
+                },
+                "sevice_delegation": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputObject",
+                    "description": "",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 78,
+  "terraform_code": "resource \"azurerm_subnet\" \"\" {\n  name = \"\"\n  resource_group_name = \"\"\n  virtual_network_name = \"\"\n  address_prefixes = [\"10.0.1.0/24\"]\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "subnet",
+        "resource_name": "Subnet_DB",
+        "value": {
+          "name": "",
+          "resource_group_name": "",
+          "virtual_network_name": "",
+          "address_prefixes": ["10.0.1.0/24"],
+          "delegation": {
+            "name": "",
+            "sevice_delegation": ""
+          }
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "resource_group",
+    "virtual_network"
+  ]
+}

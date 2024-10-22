@@ -1,0 +1,202 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/recovery_services_vaults.svg",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "인증 및 권한",
+  "resource_id": "rsc-81",
+  "resource_name": "Backup_Policy_VM",
+  "resource_type": "backup_policy_vm",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "backup_policy_vm",
+          "resource_name": "Backup_Policy_VM",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "백업 정책의 이름",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "백업 정책이 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          },
+          "recovery_vault_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "recovery_services_vault",
+              "link_property": "name",
+              "description": "연결된 복구 서비스 볼트의 이름",
+              "immutable": "false"
+            }
+          },
+          "timezone": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "UTC"
+                },
+                {
+                  "value": "KST"
+                }
+              ],
+              "description": "백업이 실행될 시간대",
+              "immutable": "false"
+            }
+          },
+          "backup": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "백업 주기와 시간 설정",
+              "child": {
+                "frequency": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "Daily"
+                      },
+                      {
+                        "value": "Weekly"
+                      }
+                    ],
+                    "description": "백업 주기",
+                    "immutable": "false"
+                  }
+                },
+                "time": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "백업 실행 시간",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "retention_daily": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "일별 백업 보존 설정",
+              "child": {
+                "count": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "일별 백업 보존 일수",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 81,
+  "terraform_code": "resource \"azurerm_backup_policy_vm\" \"bp_vm_policy1\" {\n  name = \"policy1\"\n  resource_group_name = \"rg-az01-prd-cloudwiz\"\n  recovery_vault_name = azurerm_recovery_services_vault.rsvault.name\n  timezone = \"UTC\"\n  backup {\n    frequency = \"Daily\"\n    time = \"23:00\"\n  }\n  retention_daily {\n    count = 10\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "backup_policy_vm",
+        "resource_name": "Backup_Policy_VM",
+        "value": {
+          "name": "policy1",
+          "resource_group_name": "rg-az01-prd-cloudwiz",
+          "recovery_vault_name": "azurerm_recovery_services_vault.rsvault.name",
+          "timezone": "UTC",
+          "backup": {
+            "frequency": "Daily",
+            "time": "23:00"
+          },
+          "retention_daily": {
+            "count": 10
+          },
+          "retention_weekly": {
+            "count": 6,
+            "weekdays": ["Sunday", "Wednesday", "Friday", "Saturday"]
+          },
+          "retention_monthly": {
+            "count": 7,
+            "weekdays": ["Sunday", "Wednesday"],
+            "weeks": ["First", "Last"]
+          },
+          "retention_yearly": {
+            "count": 77,
+            "weekdays": ["Sunday"],
+            "weeks": ["Last"],
+            "months": ["January"]
+          }
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "recovery_services_vault", "resource_group", "lib_data_resource_group"
+  ]
+}

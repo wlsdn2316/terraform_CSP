@@ -1,0 +1,133 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/recovery_services_vaults.svg",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "인증 및 권한",
+  "resource_id": "rsc-79",
+  "resource_name": "Recovery_Services_Vault",
+  "resource_type": "recovery_services_vault",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "recovery_services_vault",
+          "resource_name": "Recovery_Services_Vault",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "복구 서비스 볼트의 이름",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "location",
+              "description": "복구 서비스 볼트가 위치한 지역",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "복구 서비스 볼트가 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          },
+          "sku": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "RS0"
+                },
+                {
+                  "value": "RS1"
+                }
+              ],
+              "description": "SKU 레벨",
+              "immutable": "false"
+            }
+          },
+          "soft_delete_enabled": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "소프트 삭제 기능 활성화 여부",
+              "item_description": "",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 79,
+  "terraform_code": "resource \"azurerm_recovery_services_vault\" \"rsvault\" {\n  name                = \"rsvt-az01-prd-cloudwiz-01\"\n  location            = \"Korea Central\"\n  resource_group_name = \"rg-az01-prd-cloudwiz\"\n  sku                 = \"RS0\"\n  soft_delete_enabled = true\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "recovery_services_vault",
+        "resource_name": "Recovery_Services_Vault",
+        "value": {
+          "name": "",
+          "location": "",
+          "resource_group_name": "",
+          "sku": "RS0",
+          "soft_delete_enabled": true
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group"]
+}

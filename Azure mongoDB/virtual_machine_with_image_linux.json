@@ -1,0 +1,473 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-10T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/virtual_machine.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "컴퓨팅서비스",
+  "resource_id": "rsc-50",
+  "resource_name": "Virtual_Machine_with_Image",
+  "resource_type": "linux_virtual_machine",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "linux_virtual_machine",
+          "resource_name": "Virtual_Machine_with_Image",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the virtual machine.",
+              "immutable": "false"
+            },
+            "sort": 0
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "location",
+              "description": "The location of the virtual machine.",
+              "immutable": "false"
+            },
+            "sort": 1
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "The name of the resource group the virtual machine belongs to.",
+              "immutable": "false"
+            },
+            "sort": 2
+          },
+          "network_interface_ids": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "network_interface",
+              "link_property": "id",
+              "description": "Network interface IDs associated with the virtual machine.",
+              "immutable": "false"
+            },
+            "sort": 3
+          },
+          "availability_set_id": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "availability_set",
+              "link_property": "id",
+              "description": "Network interface IDs associated with the virtual machine.",
+              "immutable": "false"
+            },
+            "sort": 4
+          },
+          "size": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The size of the virtual machine.",
+              "immutable": "false"
+            },
+            "sort": 5
+          },
+          "computer_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the virtual machine.",
+              "immutable": "false"
+            },
+            "sort": 6
+          },
+          "admin_username": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the virtual machine.",
+              "immutable": "false"
+            },
+            "sort": 7
+          },
+          "admin_password": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the virtual machine.",
+              "immutable": "false"
+            },
+            "sort": 8
+          },
+          "os_disk": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "caching": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "ReadWrite"
+                      },
+                      {
+                        "value": "ReadOnly"
+                      },
+                      {
+                        "value": "None"
+                      }
+                    ],
+                    "description": "The size of the virtual machine.",
+                    "immutable": "false"
+                  },
+                  "sort": 9
+                },
+                "storage_account_type": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Standard_LRS"
+                      },
+                      {
+                        "value": "StandardSSD_LRS"
+                      },
+                      {
+                        "value": "StandardSSD_ZRS"
+                      },
+                      {
+                        "value": "Premium_LRS"
+                      },
+                      {
+                        "value": "Premium_ZRS"
+                      }
+                    ],
+                    "description": "The size of the virtual machine.",
+                    "immutable": "false"
+                  },
+                  "sort": 10
+                }
+              },
+              "description": "Image reference for the virtual machine.",
+              "immutable": "false"
+            },
+            "sort": 11
+          },
+          "disable_password_authentication": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "Disable password authentication for Linux VMs.",
+              "immutable": "false"
+            },
+            "sort": 12
+          },
+          "secure_boot_enabled": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "Disable password authentication for Linux VMs.",
+              "immutable": "false"
+            },
+            "sort": 13
+          },
+          "source_image_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "shared_image",
+              "link_property": "id",
+              "description": "The name of the resource group the virtual machine belongs to.",
+              "immutable": "false"
+            },
+            "sort": 14
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "managed_disk",
+          "resource_name": "Managed_disk",
+          "type": "subArray"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the managed disk.",
+              "immutable": "false"
+            },
+            "sort": 15
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "location",
+              "description": "The location of the managed disk.",
+              "immutable": "false"
+            },
+            "sort": 16
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "The name of the resource group the managed disk belongs to.",
+              "immutable": "false"
+            },
+            "sort": 17
+          },
+          "storage_account_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The type of the storage account.",
+              "immutable": "false"
+            },
+            "sort": 18
+          },
+          "create_option": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The create option for the managed disk.",
+              "immutable": "false"
+            },
+            "sort": 19
+          },
+          "disk_size_gb": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "description": "The size of the managed disk in GB.",
+              "immutable": "false"
+            },
+            "sort": 20
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "virtual_machine_data_disk_attachment",
+          "resource_name": "virtual_machine_data_disk_attachment",
+          "type": "arraySet",
+          "array_target": "ebs_volume"
+        },
+        "value": {
+          "managed_disk_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "link_target": "parent",
+              "link_property": "id",
+              "description": "The ID of the managed disk to attach.",
+              "immutable": "false"
+            },
+            "sort": 21
+          },
+          "virtual_machine_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "self_link",
+              "link_target": "linux_virtual_machine",
+              "link_property": "id",
+              "description": "The ID of the virtual machine to attach the disk to.",
+              "immutable": "false"
+            },
+            "sort": 22
+          },
+          "lun": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "description": "The Logical Unit Number (LUN) for the disk.",
+              "immutable": "false"
+            },
+            "sort": 23
+          },
+          "caching": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The caching option for the disk.",
+              "immutable": "false"
+            },
+            "sort": 24
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 50,
+  "terraform_code": "resource \"azurerm_linux_virtual_machine\" \"Virtual_Machine_65794\" {\n  name = \"\"\n  location = azurerm_resource_group.Resource_Group_78659.location\n  resource_group_name = \n  network_interface_ids = []\n  size = \"\"\n  computer_name = \"\"\n  admin_username = \"\"\n  admin_password = \"\"\n  source_image_id =\n  os_disk {\n    caching = \"\"\n    storage_account_type = \"\"\n  }\n  disable_password_authentication =\n  secure_boot_enabled =\n  availability_set = \n  \n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "linux_virtual_machine",
+        "resource_name": "Virtual_Machine_with_Image",
+        "value": {
+          "name": "",
+          "location": "",
+          "resource_group_name": "",
+          "network_interface_ids": [],
+          "size": "Standard_B1s",
+          "computer_name": "hostname",
+          "admin_username": "azureuser",
+          "admin_password": "new1234!",
+          "os_disk": {
+            "caching": "ReadWrite",
+            "storage_account_type": "Standard_LRS"
+          },
+          "source_image_id": "",
+          "disable_password_authentication": "false",
+          "secure_boot_enabled": "true",
+          "availability_set_id": ""
+        }
+      },
+      {
+        "resource_type": "managed_disk",
+        "resource_name": "Managed_disk",
+        "value": {
+          "name": "",
+          "location": "",
+          "resource_group_name": "",
+          "storage_account_type": "Standard_LRS",
+          "create_option": "Empty",
+          "disk_size_gb": 32
+        }
+      },
+      {
+        "resource_type": "virtual_machine_data_disk_attachment",
+        "resource_name": "Virtual_machine_data_disk_attachment",
+        "value": {
+          "managed_disk_id": "",
+          "virtual_machine_id": "",
+          "lun": "0",
+          "caching": "ReadWrite"
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-10T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "resource_group",
+    "lib_data_resource_group",
+    "lib_data_shared_image",
+    "network_interface",
+    "availability_set"
+  ]
+}

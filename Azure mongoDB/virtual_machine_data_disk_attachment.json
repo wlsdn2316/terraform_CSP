@@ -1,0 +1,100 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/virtual_machine_data_disk_attachment.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅 서비스",
+  "resource_id": "rsc-33",
+  "resource_name": "virtual_machine_data_disk_attachment",
+  "resource_type": "virtual_machine_data_disk_attachment",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "virtual_machine_data_disk_attachment",
+          "resource_name": "virtual_machine_data_disk_attachment",
+          "type": "single"
+        },
+        "value": {
+          "managed_disk_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "managed_disk",
+              "description": "The ID of the managed disk to attach.",
+              "immutable": "false"
+            }
+          },
+          "virtual_machine_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "virtual_machine",
+              "description": "The ID of the virtual machine to attach the disk to.",
+              "immutable": "false"
+            }
+          },
+          "lun": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The Logical Unit Number (LUN) for the disk.",
+              "immutable": "false"
+            }
+          },
+          "caching": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The caching option for the disk.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 33,
+  "terraform_code": "resource \"azurerm_virtual_machine_data_disk_attachment\" \"\" {\n  managed_disk_id    = azurerm_managed_disk..id\n  virtual_machine_id = azurerm_virtual_machine..id\n  lun = 0\n  caching = \"ReadWrite\"\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "virtual_machine_data_disk_attachment",
+        "resource_name": "virtual_machine_data_disk_attachment",
+        "value": {
+          "managed_disk_id": "",
+          "virtual_machine_id": "",
+          "lun": 0,
+          "caching": "ReadWrite"
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "managed_disk",
+    "virtual_machine"
+  ]
+}

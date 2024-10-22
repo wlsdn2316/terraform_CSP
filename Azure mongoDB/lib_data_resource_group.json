@@ -1,0 +1,58 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/resource_group.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "라이브러리",
+  "resource_id": "rsc-56",
+  "resource_name": "resource_group",
+  "resource_type": "lib_data_resource_group",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "lib_data_resource_group",
+          "resource_name": "resource_group",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "이미 생성된 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 56,
+  "terraform_code": "data \"azurerm_resource_group\" \"resource_group\" {\n  name = \"\"\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "lib_data_resource_group",
+        "resource_name": "resource_group",
+        "value": {
+          "name": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": []
+}

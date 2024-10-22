@@ -1,0 +1,77 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/route_table.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "라이브러리",
+  "resource_id": "rsc-75",
+  "resource_name": "Route_Table",
+  "resource_type": "lib_data_route_table",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "lib_data_route_table",
+          "resource_name": "Route_Table",
+          "type": "data"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "조회할 경로 테이블의 이름",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "경로 테이블이 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 75,
+  "terraform_code": "data \"azurerm_route_table\" \"existing_udr\" {\n  name                = \"my-udr\"\n  resource_group_name = \"my-resource-group\"\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "lib_data_route_table",
+        "resource_name": "Route_Table",
+        "value": {
+          "name": "",
+          "resource_group_name": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "resource_group",
+    "lib_data_resource_group"
+  ]
+}

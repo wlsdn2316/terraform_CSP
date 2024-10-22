@@ -1,0 +1,137 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/network_interface.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅 서비스",
+  "resource_id": "rsc-31",
+  "resource_name": "myNIC",
+  "resource_type": "azurerm_network_interface",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "azurerm_network_interface",
+          "resource_name": "myNIC",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the network interface.",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "description": "The location of the network interface.",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "description": "The name of the resource group the network interface belongs to.",
+              "immutable": "false"
+            }
+          },
+          "ip_configuration": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The name of the IP configuration.",
+                    "immutable": "false"
+                  }
+                },
+                "subnet_id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "link_target": "subnet",
+                    "description": "The ID of the subnet the IP configuration is associated with.",
+                    "immutable": "false"
+                  }
+                },
+                "private_ip_address_allocation": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The allocation method for the private IP address.",
+                    "immutable": "false"
+                  }
+                }
+              },
+              "description": "IP configuration for the network interface.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 30,
+  "terraform_code": "resource \"azurerm_network_interface\" \"main\" {\n  name                = \"myNIC\"\n  location            = azurerm_resource_group.main.location\n  resource_group_name = azurerm_resource_group.main.name\n\n  ip_configuration {\n    name                          = \"internal\"\n    subnet_id                     = azurerm_subnet.internal.id\n    private_ip_address_allocation = \"Dynamic\"\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "azurerm_network_interface",
+        "resource_name": "myNIC",
+        "value": {
+          "name": "myNIC",
+          "location": "",
+          "resource_group_name": "",
+          "ip_configuration": {
+            "name": "internal",
+            "subnet_id": "",
+            "private_ip_address_allocation": "Dynamic"
+          }
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group", "subnet"]
+}

@@ -1,0 +1,75 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/private_dns_zone.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-73",
+  "resource_name": "Private_DNS_Zone",
+  "resource_type": "private_dns_zone",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "private_dns_zone",
+          "resource_name": "Private_DNS_Zone",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "프라이빗 DNS 존의 이름",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "프라이빗 DNS 존이 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 73,
+  "terraform_code": "resource \"azurerm_private_dns_zone\" \"example\" {\n  name                = \"example-postgres-private-dns-zone.postgres.database.azure.com\"\n  resource_group_name = azurerm_resource_group.example.name\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "private_dns_zone",
+        "resource_name": "Private_DNS_Zone",
+        "value": {
+          "name": "example-postgres-private-dns-zone.postgres.database.azure.com",
+          "resource_group_name": ""
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group"]
+}

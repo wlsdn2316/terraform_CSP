@@ -1,0 +1,72 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/virtual_wan.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "라이브러리",
+  "resource_id": "rsc-64",
+  "resource_name": "Virtual_WAN",
+  "resource_type": "lib_data_virtual_wan",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "lib_data_virtual_wan",
+          "resource_name": "Virtual_WAN",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "가상 WAN의 이름",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "가상 WAN이 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 64,
+  "terraform_code": "resource \"azurerm_virtual_wan\" \"example\" {\n  name                = \"example-vwan\"\n  resource_group_name = azurerm_resource_group.example.name\n  location            = azurerm_resource_group.example.location\n  type                = \"Standard\"\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "lib_data_virtual_wan",
+        "resource_name": "Virtual_WAN",
+        "value": {
+          "name": "",
+          "resource_group_name": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group", "lib_data_resource_group", "application_security_group"]
+}

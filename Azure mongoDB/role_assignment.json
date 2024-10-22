@@ -1,0 +1,97 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/role_assignment.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "인증 및 권한",
+  "resource_id": "rsc-67",
+  "resource_name": "Role_Assignment",
+  "resource_type": "role_assignment",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "role_assignment",
+          "resource_name": "Role_Assignment",
+          "type": "single"
+        },
+        "value": {
+          "scope": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "역할 할당할 리소스 지정",
+              "immutable": "false"
+            }
+          },
+          "role_definition_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "Contributor"
+                },
+                {
+                  "value": "Managed Identity Operator"
+                }
+              ],
+              "description": "할당할 역할 이름",
+              "immutable": "false"
+            }
+          },
+          "principal_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "user_assigned_identity",
+              "link_property": "principal_id",
+              "description": "역할 할당을 받을 Managed Id 연결",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 37,
+  "terraform_code": "resource \"azurerm_role_assignment\" \"example\" {\n  scope                = azurerm_private_dns_zone.example.id\n  role_definition_name = \"Private DNS Zone Contributor\"\n  principal_id         = azurerm_user_assigned_identity.example.principal_id\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "role_assignment",
+        "resource_name": "Role_Assignment",
+        "value": {
+          "scope": "",
+          "role_definition_name": "",
+          "principal_id": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "user_assigned_identity"
+  ]
+}

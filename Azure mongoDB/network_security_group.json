@@ -1,0 +1,250 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/network_security_group.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅 서비스",
+  "resource_id": "rsc-31",
+  "resource_name": "Network_SG",
+  "resource_type": "network_security_group",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "network_security_group",
+          "resource_name": "Network_SG",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the Network Security Group.",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "description": "The location of the Network Security Group.",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "description": "The name of the resource group the Network Security Group belongs to.",
+              "immutable": "false"
+            }
+          },
+          "security_rule": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "objectArray",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The name of the security rule.",
+                    "immutable": "false"
+                  }
+                },
+                "priority": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "description": "The priority of the security rule.",
+                    "immutable": "false"
+                  }
+                },
+                "direction": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Inbound"
+                      },
+                      {
+                        "value": "Outbound"
+                      }
+                    ],
+                    "description": "The direction of the security rule.",
+                    "immutable": "false"
+                  }
+                },
+                "access": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Allow"
+                      },
+                      {
+                        "value": "Deny"
+                      }
+                    ],
+                    "description": "The access type of the security rule.",
+                    "immutable": "false"
+                  }
+                },
+                "protocol": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Tcp"
+                      },
+                      {
+                        "value": "Udp"
+                      },
+                      {
+                        "value": "Icmp"
+                      },
+                      {
+                        "value": "*"
+                      }
+                    ],
+                    "description": "The protocol of the security rule.",
+                    "immutable": "false"
+                  }
+                },
+                "source_port_range": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The source port range.",
+                    "immutable": "false"
+                  }
+                },
+                "destination_port_range": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The destination port range.",
+                    "immutable": "false"
+                  }
+                },
+                "source_application_security_group_ids": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "linkArray",
+                    "link_target": "application_security_group",
+                    "description": "The source application security group IDs.",
+                    "immutable": "false"
+                  }
+                },
+                "source_address_prefix": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The source address prefix.",
+                    "immutable": "false"
+                  }
+                },
+                "destination_address_prefix": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "The destination address prefix.",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 30,
+  "terraform_code": "resource \"azurerm_network_security_group\" \"main\" {\n  name                = \"main-nsg\"\n  location            = azurerm_resource_group.main.location\n  resource_group_name = azurerm_resource_group.main.name\n\n  security_rule {\n    name                       = \"AllowHTTPFromASG\"\n    priority                   = 1001\n    direction                  = \"Inbound\"\n    access                     = \"Allow\"\n    protocol                   = \"Tcp\"\n    source_port_range          = \"*\"\n    destination_port_range     = \"80\"\n    source_application_security_group_ids = [azurerm_application_security_group.main.id]\n    destination_address_prefix = \"*\"\n  }\n\n  security_rule {\n    name                       = \"AllowSSH\"\n    priority                   = 1002\n    direction                  = \"Inbound\"\n    access                     = \"Allow\"\n    protocol                   = \"Tcp\"\n    source_port_range          = \"*\"\n    destination_port_range     = \"22\"\n    source_address_prefix      = \"*\"\n    destination_address_prefix = \"*\"\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "network_security_group",
+        "resource_name": "Network_SG",
+        "value": {
+          "name": "main-nsg",
+          "location": "",
+          "resource_group_name": "",
+          "security_rule": [
+            {
+              "name": "AllowHTTPFromASG",
+              "priority": 1001,
+              "direction": "Inbound",
+              "access": "Allow",
+              "protocol": "Tcp",
+              "source_port_range": "*",
+              "destination_port_range": "80",
+              "source_application_security_group_ids": [""],
+              "destination_address_prefix": "*"
+            }
+          ]
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group", "application_security_group"]
+}

@@ -1,0 +1,300 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/key_vaults.svg",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "인증 및 권한",
+  "resource_id": "rsc-82",
+  "resource_name": "Key_Vault",
+  "resource_type": "key_vault",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "key_vault",
+          "resource_name": "Key_Vault",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "Key Vault의 이름",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "location",
+              "description": "Key Vault가 위치할 Azure 지역",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "Key Vault가 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          },
+          "tenant_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "Azure AD 테넌트 ID",
+              "immutable": "false"
+            }
+          },
+          "sku_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "standard"
+                },
+                {
+                  "value": "premium"
+                }
+              ],
+              "description": "Key Vault의 SKU",
+              "immutable": "false"
+            }
+          },
+          "soft_delete_retention_days": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "소프트 삭제 보존 일수",
+              "immutable": "false"
+            }
+          },
+          "purge_protection_enabled": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "퍼지 보호 활성화 여부",
+              "immutable": "false"
+            }
+          },
+          "network_acls": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "네트워크 ACL 구성",
+              "child": {
+                "default_action": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "Allow"
+                      },
+                      {
+                        "value": "Deny"
+                      }
+                    ],
+                    "description": "기본 네트워크 동작",
+                    "immutable": "false"
+                  }
+                },
+                "bypass": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "AzureServices"
+                      },
+                      {
+                        "value": "None"
+                      }
+                    ],
+                    "description": "네트워크 ACL 예외",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "enable_rbac_authorization": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "RBAC 인증 활성화 여부",
+              "immutable": "false"
+            }
+          },
+          "enabled_for_deployment": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "Key Vault를 배포에 사용할 수 있는지 여부",
+              "immutable": "false"
+            }
+          },
+          "enabled_for_disk_encryption": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "디스크 암호화를 위해 활성화 여부",
+              "immutable": "false"
+            }
+          },
+          "enabled_for_template_deployment": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "템플릿 배포에 사용 여부",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 82,
+  "terraform_code": "resource \"azurerm_key_vault\" \"vault\" {\n  name = \"az01-prd-cloudwiz-kv-01\"\n  location = azurerm_resource_group.rg.location\n  resource_group_name = azurerm_resource_group.rg.name\n  tenant_id = \"your-tenant-id\"\n  sku_name = \"standard\"\n  soft_delete_retention_days = 90\n  purge_protection_enabled = false\n  network_acls {\n    default_action = \"Allow\"\n    bypass = \"AzureServices\"\n  }\n  enable_rbac_authorization = true\n  enabled_for_deployment = false\n  enabled_for_disk_encryption = false\n  enabled_for_template_deployment = false\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "key_vault",
+        "resource_name": "Key_Vault",
+        "value": {
+          "name": "",
+          "location": "",
+          "resource_group_name": "",
+          "tenant_id": "",
+          "sku_name": "standard",
+          "soft_delete_retention_days": 90,
+          "purge_protection_enabled": false,
+          "network_acls": {
+            "default_action": "Allow",
+            "bypass": "AzureServices"
+          },
+          "enable_rbac_authorization": true,
+          "enabled_for_deployment": false,
+          "enabled_for_disk_encryption": false,
+          "enabled_for_template_deployment": false
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "resource_group",
+    "lib_data_resource_group"
+  ]
+}

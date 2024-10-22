@@ -1,0 +1,86 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/subnet.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "라이브러리",
+  "resource_id": "rsc-58",
+  "resource_name": "subnet",
+  "resource_type": "lib_data_subnet",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "lib_data_subnet",
+          "resource_name": "subnet",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "이미 생성된 서브넷의 이름",
+              "immutable": "false"
+            }
+          },
+          "virtual_network_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "virtual_network",
+              "link_property": "name",
+              "description": "서브넷이 속한 가상 네트워크의 이름",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "서브넷이 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 57,
+  "terraform_code": "data \"azurerm_subnet\" \"subnet\" {\n  name = \"\"\n  virtual_network_name = \"\"\n  resource_group_name  = \"\"\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "lib_data_subnet",
+        "resource_name": "subnet",
+        "value": {
+          "name": "",
+          "virtual_network_name": "",
+          "resource_group_name": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["lib_data_resource_group","lib_data_virtual_network"]
+}

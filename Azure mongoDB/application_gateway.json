@@ -1,0 +1,876 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/application_gateway.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-61",
+  "resource_name": "Application_gateway",
+  "resource_type": "application_gateway",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "application_gateway",
+          "resource_name": "Application_gateway",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "애플리케이션 게이트웨이의 이름",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "애플리케이션 게이트웨이가 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group.location",
+              "link_property": "location",
+              "description": "애플리케이션 게이트웨이의 리소스 그룹",
+              "immutable": "false"
+            }
+          },
+          "sku": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "애플리케이션 게이트웨이의 SKU 구성",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Standard_v2"
+                      },
+                      {
+                        "value": "WAF_v2"
+                      }
+                    ],
+                    "description": "SKU 이름",
+                    "immutable": "false"
+                  }
+                },
+                "tier": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Standard_v2"
+                      },
+                      {
+                        "value": "WAF_v2"
+                      }
+                    ],
+                    "description": "SKU 티어",
+                    "immutable": "false"
+                  }
+                },
+                "capacity": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "용량",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "autoscale_configuration": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "자동 크기 조정 구성",
+              "child": {
+                "min_capacity": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "최소 인스턴스 수",
+                    "immutable": "false"
+                  }
+                },
+                "max_capacity": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "최대 인스턴스 수",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "enable_http2": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "HTTP/2 활성화 여부",
+              "item_description": "",
+              "immutable": "false"
+            }
+          },
+          "gateway_ip_configuration": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "앱 게이트웨이 배포될 서브넷 설정",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "terraform 관리 리소스 명",
+                    "immutable": "false"
+                  }
+                },
+                "subnet_id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "linkArray",
+                    "link_target": "subnet",
+                    "description": " 엡 게이트웨이가 배포될 서브넷 연결",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "frontend_port": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "프론트엔드 포트 구성",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "프론트엔드 포트의 이름",
+                    "immutable": "false"
+                  }
+                },
+                "port": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "프론트엔드 포트 번호",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "frontend_ip_configuration": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "프론트엔드 포트 구성",
+              "child": {             
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "프론트엔드 IP 구성의 이름",
+                    "immutable": "false"
+                  }
+                },
+                "subnet_id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "link_target": "subnet",
+                    "description": "서브넷의 ID",
+                    "immutable": "false"
+                  }
+                },
+                "public_ip_address_id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "link_target": "public_ip",
+                    "description": "공용 IP 주소 연결",
+                    "immutable": "false"
+                  }
+                },
+                "private_ip_address": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "프라이빗 IP 주소",
+                    "immutable": "false"
+                  }
+                },
+                "private_ip_address_allocation": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Static"
+                      },
+                      {
+                        "value": "Dynamic"
+                      }
+                    ],
+                    "description": "프라이빗 IP 주소 할당 방식",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "backend_address_pool": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "백엔드 주소 풀 구성",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "백엔드 주소 풀의 이름",
+                    "immutable": "false"
+                  }
+                },
+                "backend_addresses": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "objectArray",
+                    "description": "백엔드 주소",
+                    "child": {
+                      "ip_address": {
+                        "validation": {
+                          "required": "false",
+                          "regex": ""
+                        },
+                        "data": {
+                          "type": "input",
+                          "description": "백엔드 IP 주소",
+                          "immutable": "false"
+                        }
+                      },
+                      "fqdn": {
+                        "validation": {
+                          "required": "false",
+                          "regex": ""
+                        },
+                        "data": {
+                          "type": "input",
+                          "description": "백엔드 FQDN",
+                          "immutable": "false"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "backend_http_settings": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "백엔드 HTTP 설정",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "백엔드 HTTP 설정의 이름",
+                    "immutable": "false"
+                  }
+                },
+                "cookie_based_affinity": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Enabled"
+                      },
+                      {
+                        "value": "Disabled"
+                      }
+                    ],
+                    "description": "쿠키 기반 선호 설정",
+                    "immutable": "false"
+                  }
+                },
+                "path": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "경로",
+                    "immutable": "false"
+                  }
+                },
+                "port": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "백엔드 포트 번호",
+                    "immutable": "false"
+                  }
+                },
+                "protocol": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Http"
+                      },
+                      {
+                        "value": "Https"
+                      }
+                    ],
+                    "description": "프로토콜",
+                    "immutable": "false"
+                  }
+                },
+                "request_timeout": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "요청 타임아웃",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "http_listener": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "objectArray",
+              "description": "HTTP 리스너",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "HTTP 리스너의 이름",
+                    "immutable": "false"
+                  }
+                },
+                "frontend_ip_configuration_name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "프론트엔드 IP 구성 이름",
+                    "immutable": "false"
+                  }
+                },
+                "frontend_port_name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "프론트엔드 포트 이름",
+                    "immutable": "false"
+                  }
+                },
+                "protocol": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Http"
+                      },
+                      {
+                        "value": "Https"
+                      }
+                    ],
+                    "description": "프로토콜",
+                    "immutable": "false"
+                  }
+                },
+                "host_name": {
+                  "validation": {
+                    "required": "false",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "호스트 이름",
+                    "immutable": "false"
+                  }
+                },
+                "ssl_certificate_name": {
+                  "validation": {
+                    "required": "false",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "SSL 인증서 이름",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "request_routing_rule": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "objectArray",
+              "description": "요청 라우팅 규칙",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "요청 라우팅 규칙의 이름",
+                    "immutable": "false"
+                  }
+                },
+                "priority": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "우선순위",
+                    "immutable": "false"
+                  }
+                },
+                "rule_type": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Basic"
+                      },
+                      {
+                        "value": "PathBasedRouting"
+                      }
+                    ],
+                    "description": "규칙 유형",
+                    "immutable": "false"
+                  }
+                },
+                "http_listener_name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "HTTP 리스너 이름",
+                    "immutable": "false"
+                  }
+                },
+                "backend_address_pool_name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "백엔드 주소 풀 이름",
+                    "immutable": "false"
+                  }
+                },
+                "backend_http_settings_name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "백엔드 HTTP 설정 이름",
+                    "immutable": "false"
+                  }
+                },
+                "redirect_configuration_name": {
+                  "validation": {
+                    "required": "false",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "리디렉션 구성 이름",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "redirect_configuration": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "리디렉션 구성",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "리디렉션 구성의 이름",
+                    "immutable": "false"
+                  }
+                },
+                "redirect_type": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Permanent"
+                      },
+                      {
+                        "value": "Found"
+                      }
+                    ],
+                    "description": "리디렉션 유형",
+                    "immutable": "false"
+                  }
+                },
+                "target_listener_name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "타겟 리스너 이름",
+                    "immutable": "false"
+                  }
+                },
+                "include_path": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "boolean",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "true"
+                      },
+                      {
+                        "value": "false"
+                      }
+                    ],
+                    "description": "경로 포함 여부",
+                    "item_description": "",
+                    "immutable": "false"
+                  }
+                },
+                "include_query_string": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "boolean",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "true"
+                      },
+                      {
+                        "value": "false"
+                      }
+                    ],
+                    "description": "쿼리 문자열 포함 여부",
+                    "item_description": "",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 32,
+  "terraform_code": "resource \"azurerm_application_gateway\" \"network\" {\n  name                = \"example-appgateway\"\n  resource_group_name = azurerm_resource_group.example.name\n  location            = azurerm_resource_group.example.location\n\n  sku {\n    name     = \"Standard_v2\"\n    tier     = \"Standard_v2\"\n    capacity = 2\n  }\n\n  autoscale_configuration {\n    min_capacity = 2\n    max_capacity = 10\n  }\n\n  enable_http2 = true\n\n  gateway_ip_configuration {\n    name      = \"my-gateway-ip-configuration\"\n    subnet_id = azurerm_subnet.example.id\n  }\n\n  frontend_port {\n    name = local.frontend_port_name\n    port = 80\n  }\n\n  frontend_ip_configuration {\n    name                 = local.frontend_ip_configuration_name\n    public_ip_address_id = azurerm_public_ip.example.id\n  }\n\n  frontend_ip_configuration {\n    name               = \"example-private-ip-configuration\"\n    subnet_id          = azurerm_subnet.example.id\n    private_ip_address = \"10.0.0.4\"\n    private_ip_address_allocation = \"Static\"\n  }\n\n  backend_address_pool {\n    name = \"example-backend-pool\"\n\n    backend_addresses {\n      ip_address = \"10.0.0.5\"\n    }\n\n    backend_addresses {\n      fqdn = \"example-backend.com\"\n    }\n\n    backend_addresses {\n      ip_address = azurerm_network_interface.example.ip_configuration[0].private_ip_address\n    }\n\n  }\n\n  backend_http_settings {\n    name                  = local.http_setting_name\n    cookie_based_affinity = \"Disabled\"\n    path                  = \"/path1/\"\n    port                  = 80\n    protocol              = \"Http\"\n    request_timeout       = 60\n  }\n\n  http_listener {\n    name                           = \"default-http-listener\"\n    frontend_ip_configuration_name = \"example-public-ip-configuration\"\n    frontend_port_name             = \"http-port\"\n    protocol                       = \"Http\"\n  }\n\n  http_listener {\n    name                           = \"multi-site-http-listener\"\n    frontend_ip_configuration_name = \"example-public-ip-configuration\"\n    frontend_port_name             = \"http-port\"\n    protocol                       = \"Http\"\n    host_name                      = \"example.com\"\n  }\n\n  http_listener {\n    name                           = \"https-listener\"\n    frontend_ip_configuration_name = \"example-public-ip-configuration\"\n    frontend_port_name             = \"https-port\"\n    protocol                       = \"Https\"\n    ssl_certificate_name           = azurerm_application_gateway_ssl_certificate.example.name\n    host_name                      = \"secure.example.com\"\n  }\n\n  request_routing_rule {\n    name                       = local.request_routing_rule_name\n    priority                   = 9\n    rule_type                  = \"Basic\"\n    http_listener_name         = local.listener_name\n    backend_address_pool_name  = local.backend_address_pool_name\n    backend_http_settings_name = local.http_setting_name\n  }\n\n  redirect_configuration {\n    name = \"http-to-https-redirect\"\n    redirect_type = \"Permanent\"\n    target_listener_name = \"https-listener\"\n    include_path = true\n    include_query_string = true\n  }\n\n  request_routing_rule {\n    name                       = \"http-to-https-rule\"\n    rule_type                  = \"Basic\"\n    http_listener_name         = \"http-listener\"\n    redirect_configuration_name = \"http-to-https-redirect\"\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "application_gateway",
+        "resource_name": "Application_gateway",
+        "value": {
+          "name": "example-appgateway",
+          "resource_group_name": "",
+          "location": "",
+          "sku": {
+            "name": "Standard_v2",
+            "tier": "Standard_v2",
+            "capacity": 2
+          },
+          "autoscale_configuration": {
+            "min_capacity": 2,
+            "max_capacity": 10
+          },
+          "enable_http2": true,
+          "gateway_ip_configuration": {
+            "name": "my-gateway-ip-configuration",
+            "subnet_id": ""
+          },
+          "frontend_port": {
+            "name": "",
+            "port": 80
+          },
+          "frontend_ip_configuration": [
+            {
+              "name": "",
+              "public_ip_address_id": ""
+            },
+            {
+              "name": "example-private-ip-configuration",
+              "subnet_id": "",
+              "private_ip_address": "10.0.0.4",
+              "private_ip_address_allocation": "Static"
+            }
+          ],
+          "backend_address_pool": {
+            "name": "example-backend-pool",
+            "backend_addresses": [
+              {
+                "ip_address": "10.0.0.5"
+              },
+              {
+                "fqdn": "example-backend.com"
+              },
+              {
+                "ip_address": ""
+              }
+            ]
+          },
+          "backend_http_settings": {
+            "name": "",
+            "cookie_based_affinity": "Disabled",
+            "path": "/path1/",
+            "port": 80,
+            "protocol": "Http",
+            "request_timeout": 60
+          },
+          "http_listener": [
+            {
+              "name": "default-http-listener",
+              "frontend_ip_configuration_name": "example-public-ip-configuration",
+              "frontend_port_name": "http-port",
+              "protocol": "Http"
+            },
+            {
+              "name": "multi-site-http-listener",
+              "frontend_ip_configuration_name": "example-public-ip-configuration",
+              "frontend_port_name": "http-port",
+              "protocol": "Http",
+              "host_name": "example.com"
+            },
+            {
+              "name": "https-listener",
+              "frontend_ip_configuration_name": "example-public-ip-configuration",
+              "frontend_port_name": "https-port",
+              "protocol": "Https",
+              "ssl_certificate_name": "",
+              "host_name": "secure.example.com"
+            }
+          ],
+          "request_routing_rule": [
+            {
+              "name": "",
+              "priority": 9,
+              "rule_type": "Basic",
+              "http_listener_name": "",
+              "backend_address_pool_name": "",
+              "backend_http_settings_name": ""
+            },
+            {
+              "name": "http-to-https-rule",
+              "rule_type": "Basic",
+              "http_listener_name": "http-listener",
+              "redirect_configuration_name": "http-to-https-redirect"
+            }
+          ],
+          "redirect_configuration": {
+            "name": "http-to-https-redirect",
+            "redirect_type": "Permanent",
+            "target_listener_name": "https-listener",
+            "include_path": true,
+            "include_query_string": true
+          }
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group", "application_security_group"]
+}

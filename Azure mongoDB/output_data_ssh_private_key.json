@@ -1,0 +1,57 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/tls_private_key.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-7",
+  "resource_group_name": "출력",
+  "resource_id": "rsc-69",
+  "resource_name": "output_ssh_private_key",
+  "resource_type": "output_data_ssh_private_key",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "output_data_ssh_private_key",
+          "resource_name": "output_ssh_private_key",
+          "type": "single"
+        },
+        "value": {
+          "value": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 69,
+  "terraform_code": "",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "output_data_ssh_private_key",
+        "resource_name": "output_ssh_private_key",
+        "value": {
+          "value": "nonsensitive(tls_private_key.example.private_key_pem)"
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [""]
+}

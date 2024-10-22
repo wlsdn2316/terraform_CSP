@@ -1,0 +1,363 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-10T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/monitor_metric_alert.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅서비스",
+  "resource_id": "rsc-46",
+  "resource_name": "monitor_metric_alert",
+  "resource_type": "monitor_metric_alert",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "monitor_metric_alert",
+          "resource_name": "monitor_metric_alert",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "메트릭 경고의 이름",
+              "immutable": "false"
+            },
+            "sort" : 0
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "description": "메트릭 경고가 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            },
+            "sort": 1
+          },
+          "scopes": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "linkArray",
+              "link_target": "virtual_machine",
+              "description": "메트릭 경고의 범위",
+              "immutable": "false"
+            },
+            "sort": 2
+          },
+          "description": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "메트릭 경고에 대한 설명",
+              "immutable": "false"
+            },
+            "sort": 3
+          },
+          "severity": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "items": [
+                {
+                  "value": 0,
+                  "description": "0 - 위험"
+                },
+                {
+                  "value": 1,
+                  "description": "1 - 오류"
+                },
+                {
+                  "value": 2,
+                  "description": "2 - 경고"
+                },
+                {
+                  "value": 3,
+                  "description": "3 - 정보"
+                },
+                {
+                  "value": 4,
+                  "description": "4 - 자세한 정보 표시"
+                }
+              ],
+              "description": "메트릭 경고의 심각도",
+              "immutable": "false"
+            },
+            "sort": 4
+          },
+          "enabled": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "경고가 활성화되었는지 여부",
+              "immutable": "false"
+            },
+            "sort": 5
+          },
+          "frequency": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "items": [
+                {
+                  "value": "PT1M",
+                  "description": "매 분마다"
+                },
+                {
+                  "value": "PT5M",
+                  "description": "매 5분마다"
+                },
+                {
+                  "value": "PT15M",
+                  "description": "매 15분마다"
+                },
+                {
+                  "value": "PT30M",
+                  "description": "매 30분마다"
+                },
+                {
+                  "value": "PT1H",
+                  "description": "매 시간마다"
+                }
+              ],
+              "description": "경고 규칙이 조건이 충족되는지 확인하는 빈도 선택",
+              "immutable": "false"
+            },
+            "sort": 6
+          },
+          "window_size": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "items": [
+                {
+                  "value": "PT5M",
+                  "description": "5 minutes"
+                },
+                {
+                  "value": "PT15M",
+                  "description": "15 minutes"
+                },
+                {
+                  "value": "PT30M",
+                  "description": "30 minutes"
+                },
+                {
+                  "value": "PT1H",
+                  "description": "1 hour"
+                }
+              ],
+              "description": "조회 기간 또는 데이터를 확인할 때마다 되돌아보는 기간입니다. 예를 들어, 1분마다 지난 5분을 볼 수 있습니다.",
+              "immutable": "false"
+            },
+            "sort": 7
+          },
+          "criteria": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "metric_namespace": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "경고 메트릭 범위 선택",
+                    "immutable": "false"
+                  },
+                  "sort": 8
+                },
+                "metric_name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Percentage CPU",
+                        "description": "Percentage CPU"
+                      },
+                      {
+                        "value": "Network In",
+                        "description": "Network In"
+                      },
+                      {
+                        "value": "Network Out",
+                        "description": "Network Out"
+                      },
+                      {
+                        "value": "Disk Read Bytes",
+                        "description": "Disk Read Bytes"
+                      },
+                      {
+                        "value": "Disk Write Bytes",
+                        "description": "Disk Write Bytes"
+                      }
+                    ],
+                    "description": "메트릭 이름",
+                    "immutable": "false"
+                  },
+                  "sort": 9
+                },
+                "aggregation": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "Average",
+                        "description": "Average"
+                      },
+                      {
+                        "value": "Total",
+                        "description": "Total"
+                      },
+                      {
+                        "value": "Minimum",
+                        "description": "Minimum"
+                      },
+                      {
+                        "value": "Maximum",
+                        "description": "Maximum"
+                      },
+                      {
+                        "value": "Count",
+                        "description": "Count"
+                      }
+                    ],
+                    "description": "메트릭 집계 유형",
+                    "immutable": "false"
+                  },
+                  "sort": 10
+                },
+                "operator": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "items": [
+                      {
+                        "value": "GreaterThan",
+                        "description": "Greater Than"
+                      },
+                      {
+                        "value": "LessThan",
+                        "description": "Less Than"
+                      },
+                      {
+                        "value": "EqualTo",
+                        "description": "Equal To"
+                      }
+                    ],
+                    "description": "임계값에 대해 메트릭 값을 비교하는 데 사용되는 연산자를 선택",
+                    "immutable": "false"
+                  },
+                  "sort": 11
+                },
+                "threshold": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "description": "임계값 입력",
+                    "immutable": "false"
+                  },
+                  "sort": 12
+                }
+              },
+              "description": "",
+              "immutable": "false"
+            },
+            "sort": 13
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 46,
+  "terraform_code": "resource \"azurerm_monitor_metric_alert\" \"main\" {\n  name                = \"main-metricalert\"\n  resource_group_name = azurerm_resource_group.main.name\n  scopes              = [azurerm_virtual_machine.main.id]\n  description         = \"Alert when CPU usage exceeds 80%.\"\n  severity            = 3\n  enabled             = true\n  frequency           = \"PT1M\"\n  window_size         = \"PT5M\"\n\n  criteria {\n    metric_namespace = \"Microsoft.Compute/virtualMachines\"\n    metric_name      = \"Percentage CPU\"\n    aggregation      = \"Average\"\n    operator         = \"GreaterThan\"\n    threshold        = 80\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "monitor_metric_alert",
+        "resource_name": "monitor_metric_alert",
+        "value": {
+          "name": "monitor_metric_alert",
+          "resource_group_name": "",
+          "scopes": [""],
+          "description": "",
+          "severity": 0,
+          "enabled": true,
+          "frequency": "PT1M",
+          "window_size": "PT5M",
+          "criteria": {
+            "metric_namespace": "Microsoft.Compute/virtualMachines",
+            "metric_name": "Percentage CPU",
+            "aggregation": "Average",
+            "operator": "GreaterThan",
+            "threshold": 80
+          }
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-10T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group", "virtual_machine"]
+}

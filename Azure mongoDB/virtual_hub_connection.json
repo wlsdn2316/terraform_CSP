@@ -1,0 +1,132 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/virtual_hub.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-63",
+  "resource_name": "Virtual_Hub_Connection",
+  "resource_type": "virtual_hub_connection",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "virtual_hub_connection",
+          "resource_name": "Virtual_Hub_Connection",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "가상 허브 연결의 이름",
+              "immutable": "false"
+            }
+          },
+          "virtual_hub_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "virtual_hub",
+              "link_property": "id",
+              "description": "연결된 가상 허브의 ID",
+              "immutable": "false"
+            }
+          },
+          "remote_virtual_network_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "virtual_network",
+              "link_property": "id",
+              "description": "연결된 원격 가상 네트워크의 ID",
+              "immutable": "false"
+            }
+          },
+          "routing": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "propagated_route_table": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputObject",
+                    "description": "기본경로 전파 사용 설정",
+                    "immutable": "false"
+                  }
+                },
+                "associated_route_table_id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "link_target": "virtual_hub",
+                    "link_property": "default_route_table_id",
+                    "description": "적용할 라우팅 테이블 지정(id)",
+                    "immutable": "false"
+                  }
+                }
+              },
+              "description": "",
+              "immutable": "false"
+            }
+        }
+      }
+    }
+    ]
+  },
+  "sort_order": 63,
+  "terraform_code": "resource \"azurerm_virtual_hub_connection\" \"example\" {\n  name                     = \"example-vhub-conn\"\n  virtual_hub_id           = azurerm_virtual_hub.example.id\n  remote_virtual_network_id = data.azurerm_virtual_network.example.id\n  resource_group_name      = data.azurerm_resource_group.example.name\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "virtual_hub_connection",
+        "resource_name": "Virtual_Hub_Connection",
+        "value": {
+          "name": "example-vhub-conn",
+          "virtual_hub_id": "",
+          "remote_virtual_network_id": "",
+          "routing": {
+            "propagated_route_table": "labels = [\"Default\"]\nroute_table_ids = [azurerm_route_table.example.id]",
+            "associated_route_table_id": ""
+          }
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "virtual_hub",
+    "virtual_network",
+    "lib_data_virtual_network",
+    "lib_data_virtual_hub"
+  ]
+}

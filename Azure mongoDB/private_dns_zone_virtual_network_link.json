@@ -1,0 +1,131 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/private_dns_zone.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-74",
+  "resource_name": "dns_zone_vnet_link",
+  "resource_type": "private_dns_zone_virtual_network_link",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "private_dns_zone_virtual_network_link",
+          "resource_name": "dns_zone_vnet_link",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "",
+              "immutable": "false"
+            }
+          },
+          "private_dns_zone_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "private_dns_zone",
+              "link_property": "name",
+              "description": "연결할 프라이빗 DNS 존의 이름",
+              "immutable": "false"
+            }
+          },
+          "virtual_network_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "virtual_network",
+              "link_property": "id",
+              "description": "연결할 가상 네트워크의 ID",
+              "immutable": "false"
+            }
+          },
+          "registration_enabled": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "boolean",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "true"
+                },
+                {
+                  "value": "false"
+                }
+              ],
+              "description": "가상 네트워크에 대한 자동 등록 활성화 여부",
+              "item_description": "",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 74,
+  "terraform_code": "resource \"azurerm_private_dns_zone_virtual_network_link\" \"example\" {\n  name                  = \"example-vnet-link\"\n  resource_group_name   = azurerm_resource_group.example.name\n  private_dns_zone_name = azurerm_private_dns_zone.example.name\n  virtual_network_id    = azurerm_virtual_network.example.id\n\n  registration_enabled = false\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "private_dns_zone_virtual_network_link",
+        "resource_name": "dns_zone_vnet_link",
+        "value": {
+          "name": "example-vnet-link",
+          "resource_group_name": "",
+          "private_dns_zone_name": "",
+          "virtual_network_id": "",
+          "registration_enabled": false
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "resource_group",
+    "private_dns_zone",
+    "virtual_network"
+  ]
+}

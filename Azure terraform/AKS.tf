@@ -1,0 +1,162 @@
+variable "node_count" {
+  type        = number
+  description = "AKS 클러스터의 초기 노드 개수"
+  default     = 2
+}
+
+variable "vm_size" {
+  type        = string
+  description = "클러스터에서 사용할 노드의 VM 크기"
+  default     = "Standard_F4s_v2"
+}
+
+variable "os_disk_size_gb" {
+  type        = number
+  description = "노드의 OS 디스크 크기(GB)"
+  default     = 128
+}
+
+variable "max_pods" {
+  type        = number
+  description = "노드당 최대 파드 수"
+  default     = 250
+}
+
+variable "os_sku" {
+  type        = string
+  description = "노드 OS SKU"
+  default     = "Ubuntu"
+}
+
+variable "additional_node_count" {
+  type        = number
+  description = "추가 노드 풀의 노드 개수"
+  default     = 1
+}
+
+
+resource "azurerm_user_assigned_identity" "umi-aks-control-id" {
+  provider            = azurerm.A
+  name                = format("umi-az01-%s-%s-aks-control-id", var.environment, var.service_name)      # 관리 ID 이름
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
+# 두 번째 사용자 할당된 관리 ID 생성
+resource "azurerm_user_assigned_identity" "umi-aks-kublet-id" {
+  provider            = azurerm.A
+  name                = format("umi-az01-%s-%s-aks-kubelet-id", var.environment, var.service_name)        # Kubelet Identity 이름
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
+
+# 라우트 테이블에 권한 할당 (Control Plane)
+resource "azurerm_role_assignment" "roleassign-01" {
+  provider             = azurerm.A
+  principal_id         = azurerm_user_assigned_identity.umi-aks-control-id.principal_id
+  role_definition_name = "Contributor"
+  scope                = azurerm_route_table.udr_app.id
+}
+
+resource "azurerm_role_assignment" "roleassign-02" {
+  provider             = azurerm.A
+  principal_id         = azurerm_user_assigned_identity.umi-aks-control-id.principal_id
+  role_definition_name = "Contributor"
+  scope                = azurerm_virtual_network.vnet.id
+}
+
+resource "azurerm_role_assignment" "roleassign-03" {
+  provider             = azurerm.A
+  principal_id         = azurerm_user_assigned_identity.umi-aks-control-id.principal_id
+  role_definition_name = "Managed Identity Operator"
+  scope                = azurerm_user_assigned_identity.umi-aks-kublet-id.id
+}
+
+resource "tls_private_key" "tlskey-01" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+# AKS 클러스터 생성
+resource "azurerm_kubernetes_cluster" "aks" {
+  provider            = azurerm.A
+  name                = format("aks-az01-%s-%s-01", var.environment, var.service_name)
+  location            = "Korea Central"
+  resource_group_name = azurerm_resource_group.rg.name
+  kubernetes_version  = "1.29.4"
+  dns_prefix          = format("aks-az01-%s-%s-01", var.environment, var.service_name)
+
+  default_node_pool {
+    name            = "default"
+    node_count      = var.node_count
+    vm_size         = var.vm_size
+    os_disk_size_gb = var.os_disk_size_gb
+    max_pods        = var.max_pods
+    vnet_subnet_id  = azurerm_subnet.sbn_app.id
+    os_sku          = var.os_sku
+  }
+
+  identity {
+    type = "UserAssigned"
+    identity_ids = [
+      azurerm_user_assigned_identity.umi-aks-control-id.id
+    ]
+  }
+
+  kubelet_identity {
+    user_assigned_identity_id = azurerm_user_assigned_identity.umi-aks-kublet-id.id
+    client_id                 = azurerm_user_assigned_identity.umi-aks-kublet-id.client_id
+    object_id                 = azurerm_user_assigned_identity.umi-aks-kublet-id.principal_id
+  }
+
+  private_cluster_enabled = true
+  private_dns_zone_id     = "None"
+  private_cluster_public_fqdn_enabled = true
+
+  linux_profile {
+    admin_username = "azureuser"
+    ssh_key {
+      key_data = tls_private_key.tlskey-01.public_key_openssh
+    }
+  }
+
+  network_profile {
+    network_plugin      = "azure"
+    network_plugin_mode = "Overlay"
+    service_cidr        = "100.64.252.0/22"
+    dns_service_ip      = "100.64.255.253"
+    pod_cidr            = "100.64.0.0/18"
+    outbound_type       = "userDefinedRouting"
+  }
+
+  tags = {
+    Name          = format("aks-az01-%s-%s-01", var.environment, var.service_name)
+    Service       = var.service_name
+    ServiceGrade  = var.service_grade
+    Environment   = var.environment
+  }
+
+  depends_on = [
+    azurerm_role_assignment.roleassign-01,
+    azurerm_role_assignment.roleassign-02,
+    azurerm_role_assignment.roleassign-03
+  ]
+}
+
+resource "azurerm_kubernetes_cluster_node_pool" "nodepool" {
+  provider = azurerm.A
+	name = format("%s%s", var.environment, var.service_name)
+  vm_size  = var.vm_size
+  os_disk_size_gb = var.os_disk_size_gb
+  node_count = var.additional_node_count
+  max_pods   = var.max_pods
+  os_sku     = var.os_sku
+
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
+  vnet_subnet_id        = azurerm_subnet.sbn_app.id
+}
+
+output "ssh_private_key" {
+  value = nonsensitive(tls_private_key.tlskey-01.private_key_pem)
+}

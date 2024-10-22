@@ -1,0 +1,171 @@
+provider "azurerm" {
+  features {}
+  alias           = "gallery"
+  client_id       = var.client_id_gallery
+  client_secret   = var.client_secret_gallery
+  subscription_id = var.subscription_id_gallery
+  tenant_id       = var.tenant_id_gallery
+}
+
+variable "vm_count" {
+  type        = string
+  description = "VM의 개수"
+  default     = 2
+}
+
+variable "vm_environment" {
+  type        = string
+  description = "VM 용도(was,web,jumpbox)"
+  default     = "web"
+}
+
+# Variables for VM Configuration
+variable "vm_size" {
+  type        = string
+  description = "The size of the virtual machine."
+  default     = "Standard_D8s_v4"
+}
+
+variable "admin_username" {
+  type        = string
+  description = "The admin username for the virtual machine."
+  default     = "azureuser"
+}
+
+variable "admin_password" {
+  type        = string
+  description = "The admin password for the virtual machine."
+  default     = "new1234!"
+}
+
+variable "client_id_gallery" {
+  type        = string
+  description = "The client ID for the Azure service principal."
+  default     = "ad2eef53-9e1f-4199-a01a-e09e2882b41e"
+}
+
+variable "client_secret_gallery" {
+  type        = string
+  description = "The client secret for the Azure service principal."
+  default     = "3v38Q~PNXcXNsXmglir0epyEXbwbk-9aC-0uHbrb"
+}
+
+variable "subscription_id_gallery" {
+  type        = string
+  description = "The subscription ID for the Azure account."
+  default     = "64061f25-366b-47a8-af8b-74a88656fbb2"
+}
+
+variable "tenant_id_gallery" {
+  type        = string
+  description = "The tenant ID for the Azure account."
+  default     = "e6c9ec09-8430-4a99-bf15-242bc089b409"
+
+}
+
+variable "gallery_name" {
+  type        = string
+  description = "The name of the shared image gallery."
+  default     = "cg_az01_co013601_01"
+}
+
+variable "image_name" {
+  type        = string
+  description = "The name of the shared image."
+  default     = "image-Ubuntu22.04-240828"
+}
+#image-jump-241010
+#image-Redhat8.10-240828
+#image-rocky8.10-240820
+#image-Rocky8.10-240828
+#image-Ubuntu22.04-240828
+#image-Windows2019-240829
+
+
+
+# Resource Group Creation
+data "azurerm_resource_group" "rg" {
+  name     = format("rg-az01-%s-%s-%s-01", var.service_code, var.environment, var.service_name)
+  provider = azurerm.A
+}
+
+data "azurerm_resource_group" "rg_gallery" {
+  name     = "rg-az01-co013601-azgov-infra-01"
+  provider = azurerm.gallery
+}
+
+# Virtual Network Creation
+data "azurerm_virtual_network" "vnet" {
+  name                = format("vnet-az01-%s-%s-01", var.environment, var.service_name)
+  resource_group_name = data.azurerm_resource_group.rg.name
+  provider            = azurerm.A
+}
+
+# Subnets Creation
+data "azurerm_subnet" "sbn_appgw" {
+  provider             = azurerm.A
+  name                 = format("sbn-az01-%s-%s-appgw", var.environment, var.service_name)
+  resource_group_name  = data.azurerm_resource_group.rg.name
+  virtual_network_name = data.azurerm_virtual_network.vnet.name
+}
+
+data "azurerm_subnet" "sbn_app" {
+  provider             = azurerm.A
+  name                 = format("sbn-az01-%s-%s-app", var.environment, var.service_name)
+  resource_group_name  = data.azurerm_resource_group.rg.name
+  virtual_network_name = data.azurerm_virtual_network.vnet.name
+}
+
+# Network Interfaces for VMs
+resource "azurerm_network_interface" "vm_nic" {
+  count               = var.vm_count
+  provider            = azurerm.A
+  name                = format("vm-az01-%s-%s-%s-%02d", var.environment, var.service_name, var.vm_environment, count.index + 1)
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+
+  ip_configuration {
+    name                          = format("ipconfig-%02d", count.index + 1)
+    private_ip_address_allocation = "Dynamic"
+    subnet_id                     = data.azurerm_subnet.sbn_app.id
+  }
+}
+
+# Virtual Machines# Virtual Machines
+resource "azurerm_linux_virtual_machine" "vm" {
+  count               = var.vm_count
+  provider            = azurerm.A
+  name                = format("vm-az01-%s-%s-%s-%02d", var.environment, var.service_name, var.vm_environment, count.index + 1)
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+  computer_name       = format("vm-az01-%s-%s-%s-%02d", var.environment, var.service_name, var.vm_environment, count.index + 1)
+  size                = var.vm_size
+  admin_username      = var.admin_username
+  admin_password      = var.admin_password
+  secure_boot_enabled = true
+  source_image_id     = data.azurerm_shared_image.shared_image.id
+  network_interface_ids = [azurerm_network_interface.vm_nic[count.index].id]
+  disable_password_authentication = false
+
+
+  os_disk {
+    storage_account_type = "Standard_LRS"
+    caching              = "ReadWrite"
+  }
+
+
+  tags = {
+    Name          = format("vm-az01-%s-%s-%s-%02d", var.environment, var.service_name, var.vm_environment, count.index + 1)
+    Service       = var.service_name
+    ServiceGrade  = var.service_grade
+    Environment   = var.environment
+  }
+}
+
+# Shared Image Data Source
+data "azurerm_shared_image" "shared_image" {
+  provider            = azurerm.gallery
+  name                = var.image_name
+  gallery_name        = var.gallery_name 
+  resource_group_name = data.azurerm_resource_group.rg_gallery.name
+}

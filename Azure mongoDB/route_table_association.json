@@ -1,0 +1,74 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/sbn_rt_association.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-60",
+  "resource_name": "Sbn_rt_association",
+  "resource_type": "subnet_route_table_association",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "subnet_route_table_association",
+          "resource_name": "Sbn_rt_association",
+          "type": "single"
+        },
+        "value": {
+          "subnet_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "subnet",
+              "link_property": "id",
+              "description": "연결할 서브넷의 ID.",
+              "immutable": "false"
+            }
+          },
+          "route_table_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "route_table",
+              "link_property": "id",
+              "description": "연결할 라우팅 테이블의 ID.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 60,
+  "terraform_code": "resource \"azurerm_subnet_route_table_association\" \"example\" {\n  subnet_id      = azurerm_subnet.example.id\n  route_table_id = azurerm_route_table.example.id\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "subnet_route_table_association",
+        "resource_name": "Sbn_rt_association",
+        "value": {
+          "subnet_id": "",
+          "route_table_id": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["subnet", "lib_data_subnet", "route_table"]
+}

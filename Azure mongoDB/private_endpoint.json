@@ -1,0 +1,188 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/private_endpoint.svg",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "네트워크",
+  "resource_id": "rsc-77",
+  "resource_name": "Private_Endpoint",
+  "resource_type": "private_endpoint",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "private_endpoint",
+          "resource_name": "Private_Endpoint",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "프라이빗 엔드포인트의 이름",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "location",
+              "description": "프라이빗 엔드포인트가 위치한 지역",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "프라이빗 엔드포인트가 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          },
+          "subnet_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "subnet",
+              "link_property": "id",
+              "description": "프라이빗 엔드포인트가 속한 서브넷의 ID",
+              "immutable": "false"
+            }
+          },
+          "private_service_connection": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "copied": "true",
+              "description": "프라이빗 서비스 연결 구성",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "프라이빗 서비스 연결의 이름",
+                    "immutable": "false"
+                  }
+                },
+                "private_connection_resource_id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "copied": "true",
+                    "link_target": "postgresql_flexible_server",
+                    "link_property": "id",
+                    "description": "프라이빗 연결 리소스의 ID",
+                    "immutable": "false"
+                  }
+                },
+                "subresource_names": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "서브 리소스 이름",
+                    "immutable": "false"
+                  }
+                },
+                "is_manual_connection": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "boolean",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "true"
+                      },
+                      {
+                        "value": "false"
+                      }
+                    ],
+                    "description": "수동 연결 여부",
+                    "item_description": "",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 77,
+  "terraform_code": "resource \"azurerm_private_endpoint\" \"example\" {\n  name                = \"example-private-endpoint\"\n  location            = azurerm_resource_group.example.location\n  resource_group_name = azurerm_resource_group.example.name\n  subnet_id           = azurerm_subnet.example.id\n\n  private_service_connection {\n    name                           = \"example-privateserviceconnection\"\n    private_connection_resource_id = azurerm_postgresql_flexible_server.example.id\n    subresource_names              = [\"postgresqlServer\"]\n    is_manual_connection           = false\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "private_endpoint",
+        "resource_name": "Private_Endpoint",
+        "value": {
+          "name": "",
+          "location": "",
+          "resource_group_name": "",
+          "subnet_id": "",
+          "private_service_connection": {
+            "name": "",
+            "private_connection_resource_id": "",
+            "subresource_names": 
+              "postgresqlServer"
+            ,
+            "is_manual_connection": false
+          }
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "resource_group",
+    "subnet",
+    "postgresql_flexible_server"
+  ]
+}

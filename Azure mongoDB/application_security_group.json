@@ -1,0 +1,85 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/application_security_group.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅 서비스",
+  "resource_id": "rsc-32",
+  "resource_name": "application_SG",
+  "resource_type": "application_security_group",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "application_security_group",
+          "resource_name": "application_SG",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the Application Security Group.",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "description": "The location of the Application Security Group.",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "description": "The name of the resource group the Application Security Group belongs to.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 31,
+  "terraform_code": "resource \"azurerm_application_security_group\" \"main\" {\n  name                = \"main-asg\"\n  location            = azurerm_resource_group.main.location\n  resource_group_name = azurerm_resource_group.main.name\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "application_security_group",
+        "resource_name": "application_SG",
+        "value": {
+          "name": "main-asg",
+          "location": "",
+          "resource_group_name": ""
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group"]
+}

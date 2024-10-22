@@ -1,0 +1,525 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/kubernetes_cluster.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "컴퓨팅서비스",
+  "resource_id": "rsc-55",
+  "resource_name": "Kubernetes_Cluster",
+  "resource_type": "kubernetes_cluster",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "kubernetes_cluster",
+          "resource_name": "Kubernetes_Cluster",
+          "type": "single"
+        },
+        "value": {
+          "linux_profile": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "child": {
+                "ssh_key": {
+                  "validation": {
+                    "required": "false",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputObject",
+                    "description": "",
+                    "immutable": "false"
+                  }
+                },
+                "admin_username": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "Kubernetes 클러스터의 이름",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "location",
+              "description": "Kubernetes 클러스터의 위치",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "Kubernetes 클러스터가 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          },
+          "kubernetes_version": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "Kubernetes 버전",
+              "immutable": "false"
+            }
+          },
+          "dns_prefix": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "",
+              "immutable": "false"
+            }
+          },
+          "default_node_pool": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "기본 노드 풀 구성",
+              "child": {
+                "name": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "노드 풀의 이름",
+                    "immutable": "false"
+                  }
+                },
+                "node_count": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "노드 풀의 노드 수",
+                    "immutable": "false"
+                  }
+                },
+                "vm_size": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "노드 풀의 가상 머신 크기",
+                    "immutable": "false"
+                  }
+                },
+                "os_disk_size_gb": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "노드 OS 디스크 크기(GB)",
+                    "immutable": "false"
+                  }
+                },
+                "max_pods": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "노드당 최대 포드 수",
+                    "immutable": "false"
+                  }
+                },
+                "vnet_subnet_id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "copied": "true",
+                    "link_target": "subnet",
+                    "link_property": "id",
+                    "description": "가상 네트워크 서브넷의 ID",
+                    "immutable": "false"
+                  }
+                },
+                "os_sku": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "사용할 OS 명",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "network_profile": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "네트워크 프로필 구성",
+              "child": {
+                "network_plugin": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "azure"
+                      },
+                      {
+                        "value": "kubenet"
+                      }
+                    ],
+                    "description": "사용할 네트워크 플러그인",
+                    "immutable": "false"
+                  }
+                },
+                "network_plugin_mode": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "overlay"
+                      },
+                      {
+                        "value": "transparent"
+                      }
+                    ],
+                    "description": "사용할 네트워크 플러그인 모드",
+                    "immutable": "false"
+                  }
+                },
+                "outbound_type": {
+                  "validation": {
+                    "required": "false",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "아웃바운드 트래픽 유형 지정",
+                    "immutable": "false"
+                  }
+                },
+                "dns_service_ip": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "DNS 서비스 IP 주소",
+                    "immutable": "false"
+                  }
+                },
+                "service_cidr": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "Kubernetes 서비스의 CIDR",
+                    "immutable": "false"
+                  }
+                },
+                "pod_cidr": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "input",
+                    "copied": "true",
+                    "description": "Pod 의 CIDR",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "identity": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "아이덴티티 구성",
+              "child": {
+                "type": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      {
+                        "value": "SystemAssigned"
+                      },
+                      {
+                        "value": "UserAssigned"
+                      }
+                    ],
+                    "description": "사용할 아이덴티티 유형",
+                    "immutable": "false"
+                  }
+                },
+                "identity_ids": {
+                  "validation": {
+                    "required": "false",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "description": "control_plane_identity 연결",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "kubelet_identity": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "kubelet 아이덴티티 구성",
+              "child": {
+                "user_assigned_identity_id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "copied": "true",
+                    "link_target": "user_assigned_identity",
+                    "link_property": "id",
+                    "description": "",
+                    "immutable": "false"
+                  }
+                },
+                "client_id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "copied": "true",
+                    "link_target": "user_assigned_identity",
+                    "link_property": "client_id",
+                    "description": "",
+                    "immutable": "false"
+                  }
+                },
+                "object_id": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "link",
+                    "copied": "true",
+                    "link_target": "user_assigned_identity",
+                    "link_property": "principal_id",
+                    "description": "",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "private_cluster_enabled": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "http_application_routing_enabled": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          },
+          "depends_on": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "",
+              "item_description": "",
+              "immutable": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 55,
+  "terraform_code": "resource \"azurerm_kubernetes_cluster\" \"main\" {\n  name                = var.cluster_name\n  location            = var.location\n  resource_group_name = azurerm_resource_group.main.name\n  dns_prefix          = \"${var.cluster_name}-dns\"\n\n  default_node_pool {\n    name            = \"agentpool\"\n    node_count      = var.node_count\n    vm_size         = var.node_vm_size\n    max_pods        = var.max_pods\n    vnet_subnet_id  = var.vnet_subnet_id\n  }\n\n  network_profile {\n    network_plugin      = \"azure\"\n    network_plugin_mode = \"overlay\"\n    network_policy      = \"calico\"\n    dns_service_ip      = var.dns_service_ip\n    service_cidr        = var.service_cidr\n    docker_bridge_cidr  = var.pod_cidr\n  }\n\n  addon_profile {\n    oms_agent {\n      enabled = true\n    }\n  }\n\n  private_cluster_enabled = true\n  kubernetes_version      = var.kubernetes_version\n  role_based_access_control {\n    enabled = true\n  }\n\n  identity {\n    type = \"SystemAssigned\"\n  }\n\n  tags = {\n    Environment = \"Development\"\n  }\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "kubernetes_cluster",
+        "resource_name": "Kubernetes_Cluster",
+        "value": {
+          "name": "",
+          "location": "",
+          "resource_group_name": "",
+          "kubernetes_version": "1.29.4",
+          "dns_prefix": "",
+          "default_node_pool": {
+            "name": "",
+            "node_count": "2",
+            "vm_size": "Standard_F4s_v2",
+            "os_disk_size_gb": "128",
+            "max_pods": "250",
+            "vnet_subnet_id": "",
+            "os_sku": "Ubuntu"
+          },
+          "network_profile": {
+            "network_plugin": "azure",
+            "network_plugin_mode": "overlay",
+            "outbound_type": "userDefinedRouting",
+            "dns_service_ip": "100.64.255.253",
+            "service_cidr": "100.64.252.0/22",
+            "pod_cidr": "100.64.0.0/18"
+          },
+          "identity": {
+            "type": "UserAssigned",
+            "identity_ids":["azurerm_user_assigned_identity..id"]
+          },
+          "kubelet_identity": {
+            "user_assigned_identity_id": "",
+            "client_id":"",
+            "object_id":""
+          },
+          "private_cluster_enabled": "true",
+          "http_application_routing_enabled": "true",
+          "linux_profile": {
+            "admin_username": "",
+            "ssk_key": {
+              "image": ""
+            }
+          }
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "resource_group",
+    "lib_data_resource_group",
+    "subnet",
+    "lib_data_subnet",
+    "user_assigned_identity",
+    "tls_private_key"
+  ]
+}

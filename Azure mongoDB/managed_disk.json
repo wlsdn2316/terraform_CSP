@@ -1,0 +1,121 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://example.com/assets/managed_disk.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-1",
+  "resource_group_name": "컴퓨팅 서비스",
+  "resource_id": "rsc-32",
+  "resource_name": "managed_disk",
+  "resource_type": "managed_disk",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "Managed_disk",
+          "resource_name": "managed_disk",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The name of the managed disk.",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "description": "The location of the managed disk.",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "description": "The name of the resource group the managed disk belongs to.",
+              "immutable": "false"
+            }
+          },
+          "storage_account_type": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The type of the storage account.",
+              "immutable": "false"
+            }
+          },
+          "create_option": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The create option for the managed disk.",
+              "immutable": "false"
+            }
+          },
+          "disk_size_gb": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "The size of the managed disk in GB.",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 32,
+  "terraform_code": "resource \"azurerm_managed_disk\" \"data\" {\n  name                 = \"myDataDisk\"\n  location             = azurerm_resource_group.main.location\n  resource_group_name  = azurerm_resource_group.main.name\n  storage_account_type = \"Standard_LRS\"\n  create_option        = \"Empty\"\n  disk_size_gb         = 32\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "managed_disk",
+        "resource_name": "managed_disk",
+        "value": {
+          "name": "myDataDisk",
+          "location": "",
+          "resource_group_name": "",
+          "storage_account_type": "Standard_LRS",
+          "create_option": "Empty",
+          "disk_size_gb": 32
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-05-23T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group"]
+}

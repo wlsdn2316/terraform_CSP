@@ -1,0 +1,166 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-unique-id",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/kubernetes_cluster.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-2",
+  "resource_group_name": "컴퓨팅서비스",
+  "resource_id": "rsc-76",
+  "resource_name": "Node_Pool",
+  "resource_type": "kubernetes_cluster_node_pool",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "kubernetes_cluster_node_pool",
+          "resource_name": "Node_Pool",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "노드 풀의 이름",
+              "immutable": "false"
+            }
+          },
+          "kubernetes_cluster_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "kubernetes_cluster",
+              "link_property": "id",
+              "description": "연결된 Kubernetes 클러스터의 ID",
+              "immutable": "false"
+            }
+          },
+          "vm_size": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "노드에서 사용할 가상 머신 크기 (SKU)",
+              "immutable": "false"
+            }
+          },
+          "node_count": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "노드 풀의 초기 노드 개수",
+              "immutable": "false"
+            }
+          },
+          "vnet_subnet_id": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "subnet",
+              "link_property": "id",
+              "description": "노드가 속할 서브넷의 ID",
+              "immutable": "false"
+            }
+          },
+          "os_disk_size_gb": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "노드 OS 디스크 크기(GB)",
+              "immutable": "false"
+            }
+          },
+          "max_pods": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "inputNs",
+              "copied": "true",
+              "description": "노드당 최대 파드 수",
+              "immutable": "false"
+            }
+          },
+          "os_sku": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "selectbox",
+              "copied": "true",
+              "items": [
+                {
+                  "value": "Ubuntu"
+                },
+                {
+                  "value": "Windows"
+                }
+              ],
+              "description": "노드 풀의 운영 체제 SKU",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 76,
+  "terraform_code": "resource \"azurerm_kubernetes_cluster_node_pool\" \"extra_pool\" {\n  name                  = \"extra\"\n  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id\n  vm_size               = \"Standard_DS3_v2\"\n  node_count            = 2\n  vnet_subnet_id        = azurerm_subnet.internal.id\n  os_disk_size_gb       = 50\n  max_pods              = 110\n  os_sku                = \"Ubuntu\"\n\n  tags = {\n    name = \"jjwakscluster6-extrapool\"\n  }\n\n  depends_on = [azurerm_kubernetes_cluster.aks]\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "kubernetes_cluster_node_pool",
+        "resource_name": "Node_Pool",
+        "value": {
+          "name": "devkol",
+          "kubernetes_cluster_id": "",
+          "vm_size": "Standard_DS3_v2",
+          "node_count": 2,
+          "vnet_subnet_id": "",
+          "os_disk_size_gb": 50,
+          "max_pods": 110,
+          "os_sku": "Ubuntu"
+        },
+        "tags": {}
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": [
+    "kubernetes_cluster",
+    "subnet"
+  ]
+}

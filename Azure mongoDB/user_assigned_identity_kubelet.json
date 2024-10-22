@@ -1,0 +1,86 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/user_assigned_identity.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "인증 및 권한",
+  "resource_id": "rsc-69",
+  "resource_name": "Managed_Identity_kubelet",
+  "resource_type": "user_assigned_identity",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "user_assigned_identity",
+          "resource_name": "Managed Identity",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "Managed Id 이름",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "Managed Id가 속할 리소스 그룹 연결",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "location",
+              "description": "Managed Id가 속할 리소스 그룹 연결",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 69,
+  "terraform_code": "resource \"azurerm_user_assigned_identity\" \"example\" {\n  name                = \"aks-example-identity\"\n  resource_group_name = azurerm_resource_group.example.name\n  location            = azurerm_resource_group.example.location\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "user_assigned_identity",
+        "resource_name": "Managed_Identity_kubelet",
+        "value": {
+          "name": "",
+          "resource_group_name": "",
+          "location": ""
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group", "lib_data_resource_group"]
+}

@@ -1,0 +1,72 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "cloudwiz-admin@kt.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/virtual_hub.png",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-6",
+  "resource_group_name": "라이브러리",
+  "resource_id": "rsc-65",
+  "resource_name": "Virtual_Hub",
+  "resource_type": "lib_data_virtual_hub",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "lib_data_virtual_hub",
+          "resource_name": "Virtual_Hub",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "description": "가상 허브의 이름",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "가상 허브가 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 65,
+  "terraform_code": "resource \"azurerm_virtual_hub\" \"example\" {\n  name                = \"example-vhub\"\n  location            = azurerm_resource_group.example.location\n  resource_group_name = azurerm_resource_group.example.name\n  virtual_wan_id      = azurerm_virtual_wan.example.id\n  address_prefix      = \"10.0.0.0/16\"\n}",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "lib_data_virtual_hub",
+        "resource_name": "Virtual_Hub",
+        "value": {
+          "name": "",
+          "resource_group_name": "" 
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group", "lib_data_resource_group", "virtual_wan", "lib_data_virtual_wan"]
+}

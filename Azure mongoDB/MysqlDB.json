@@ -1,0 +1,397 @@
+{
+  "ansible_code": "",
+  "ansible_properties": {},
+  "created_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "created_by": "user@example.com",
+  "domain_id": "domain-9080aa4ee44c",
+  "img_src": "https://ktds-ci.s3.ap-northeast-2.amazonaws.com/assets_azure/mysql_flexible_server.svg",
+  "provider": "azure",
+  "resource_group_id": "rsc-grp-9",
+  "resource_group_name": "데이터베이스",
+  "resource_id": "rsc-82",
+  "resource_name": "MySQL_Flexible_Server",
+  "resource_type": "mysql_flexible_server",
+  "resource_type_properties": {
+    "meta": [
+      {
+        "resource": {
+          "resource_type": "mysql_flexible_server",
+          "resource_name": "MySQL_Flexible_Server",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "MySQL 서버의 이름",
+              "immutable": "false"
+            }
+          },
+          "location": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "location",
+              "description": "서버가 위치할 Azure 지역",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "서버가 속한 리소스 그룹 이름",
+              "immutable": "false"
+            }
+          },
+          "version": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "MySQL 서버의 버전",
+              "immutable": "false"
+            }
+          },
+          "administrator_login": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "MySQL 서버 관리자 로그인",
+              "immutable": "false"
+            }
+          },
+          "administrator_password": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "MySQL 서버 관리자 비밀번호",
+              "immutable": "false"
+            }
+          },
+          "sku_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "서버의 SKU 이름",
+              "immutable": "false"
+            }
+          },
+          "zone": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "서버가 배치될 영역",
+              "immutable": "false"
+            }
+          },
+          "storage": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "저장소 설정",
+              "child": {
+                "size_gb": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "inputNs",
+                    "copied": "true",
+                    "description": "스토리지 크기(GB)",
+                    "immutable": "false"
+                  }
+                },
+                "auto_grow_enabled": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "boolean",
+                    "copied": "true",
+                    "items": [{ "value": "true" }, { "value": "false" }],
+                    "description": "자동 확장 여부",
+                    "immutable": "false"
+                  }
+                },
+                "io_scaling_enabled": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "boolean",
+                    "copied": "true",
+                    "items": [{ "value": "true" }, { "value": "false" }],
+                    "description": "IO 스케일링 활성화 여부",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          },
+          "high_availability": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "object",
+              "description": "고가용성 설정",
+              "child": {
+                "mode": {
+                  "validation": {
+                    "required": "true",
+                    "regex": ""
+                  },
+                  "data": {
+                    "type": "selectbox",
+                    "copied": "true",
+                    "items": [
+                      { "value": "ZoneRedundant" },
+                      { "value": "SameZone" }
+                    ],
+                    "description": "고가용성 모드",
+                    "immutable": "false"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "mysql_flexible_database",
+          "resource_name": "MySQL_Flexible_Database",
+          "type": "subArray"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "데이터베이스의 이름",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "데이터베이스가 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          },
+          "server_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "mysql_flexible_server",
+              "link_property": "name",
+              "description": "데이터베이스가 속한 MySQL 서버의 이름",
+              "immutable": "false"
+            }
+          },
+          "charset": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "데이터베이스의 문자 집합(Charset)",
+              "immutable": "false"
+            }
+          },
+          "collation": {
+            "validation": {
+              "required": "false",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "데이터베이스의 정렬 방식(Collation)",
+              "immutable": "false"
+            }
+          }
+        }
+      },
+      {
+        "resource": {
+          "resource_type": "mysql_flexible_database",
+          "resource_name": "MySQL_Flexible_Database",
+          "type": "single"
+        },
+        "value": {
+          "name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "데이터베이스의 이름",
+              "immutable": "false"
+            }
+          },
+          "resource_group_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "resource_group",
+              "link_property": "name",
+              "description": "데이터베이스가 속한 리소스 그룹의 이름",
+              "immutable": "false"
+            }
+          },
+          "server_name": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "link",
+              "copied": "true",
+              "link_target": "mysql_flexible_server",
+              "link_property": "name",
+              "description": "데이터베이스가 속한 MySQL 서버의 이름",
+              "immutable": "false"
+            }
+          },
+          "charset": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "데이터베이스의 문자 집합(Charset)",
+              "immutable": "false"
+            }
+          },
+          "collation": {
+            "validation": {
+              "required": "true",
+              "regex": ""
+            },
+            "data": {
+              "type": "input",
+              "copied": "true",
+              "description": "데이터베이스의 정렬 방식(Collation)",
+              "immutable": "false"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sort_order": 82,
+  "terraform_code": "resource \"azurerm_mysql_flexible_server\" \"mydb\" { ... }",
+  "terraform_properties": {
+    "property": [
+      {
+        "resource_type": "mysql_flexible_server",
+        "resource_name": "MySQL_Flexible_Server",
+        "value": {
+          "name": "mydb-az01-prd-cloudwiz-01",
+          "location": "Korea Central",
+          "resource_group_name": "rg-az01-prd-cloudwiz",
+          "version": "8.0.21",
+          "administrator_login": "ktadmin",
+          "administrator_password": "KTP@ssw0rd123",
+          "sku_name": "GP_Standard_D2ds_v4",
+          "zone": "2",
+          "storage": {
+            "size_gb": 128,
+            "auto_grow_enabled": true,
+            "io_scaling_enabled": true
+          },
+          "high_availability": {
+            "mode": "SameZone"
+          }
+        }
+      },
+      {
+        "resource_type": "mysql_flexible_database",
+        "resource_name": "MySQL_Flexible_Database",
+        "value": {
+          "name": "mysql-test-db",
+          "resource_group_name": "rg-az01-prd-cloudwiz",
+          "server_name": "mydb-az01-prd-cloudwiz-01",
+          "charset": "utf8mb4",
+          "collation": "utf8mb4_unicode_ci"
+        }
+      }
+    ]
+  },
+  "updated_at": {
+    "$date": "2024-07-18T00:00:00.000Z"
+  },
+  "updated_by": "user@example.com",
+  "valid_value": ["resource_group", "lib_data_resource_group"]
+}
