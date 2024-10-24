@@ -38,16 +38,16 @@ variable "additional_node_count" {
 resource "azurerm_user_assigned_identity" "umi-aks-control-id" {
   provider            = azurerm.A
   name                = format("umi-az01-%s-%s-aks-control-id", var.environment, var.service_name)      # 관리 ID 이름
-  location            = data.azurerm_resource_group.rg-az01-co013601-azgov-infra-01.location
-  resource_group_name = data.azurerm_resource_group.rg-az01-co013601-azgov-infra-01.name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
 }
 
 # 두 번째 사용자 할당된 관리 ID 생성
 resource "azurerm_user_assigned_identity" "umi-aks-kublet-id" {
   provider            = azurerm.A
   name                = format("umi-az01-%s-%s-aks-kubelet-id", var.environment, var.service_name)        # Kubelet Identity 이름
-  location            = data.azurerm_resource_group.rg-az01-co013601-azgov-infra-01.location
-  resource_group_name = data.azurerm_resource_group.rg-az01-co013601-azgov-infra-01.name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
 }
 
 
@@ -56,14 +56,14 @@ resource "azurerm_role_assignment" "roleassign-01" {
   provider             = azurerm.A
   principal_id         = azurerm_user_assigned_identity.umi-aks-control-id.principal_id
   role_definition_name = "Contributor"
-  scope                = data.azurerm_route_table.udr_app.id
+  scope                = azurerm_route_table.udr_app.id
 }
 
-resource "azurerm_role_assignment" "roleassign-04" {
+resource "azurerm_role_assignment" "roleassign-02" {
   provider             = azurerm.A
   principal_id         = azurerm_user_assigned_identity.umi-aks-control-id.principal_id
   role_definition_name = "Contributor"
-  scope                = data.azurerm_virtual_network.vnet-az01-azgov-iac-01.id
+  scope                = azurerm_virtual_network.vnet.id
 }
 
 resource "azurerm_role_assignment" "roleassign-03" {
@@ -83,7 +83,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   provider            = azurerm.A
   name                = format("aks-az01-%s-%s-01", var.environment, var.service_name)
   location            = "Korea Central"
-  resource_group_name = data.azurerm_resource_group.rg-az01-co013601-azgov-infra-01.name
+  resource_group_name = azurerm_resource_group.rg.name
   kubernetes_version  = "1.29.4"
   dns_prefix          = format("aks-az01-%s-%s-01", var.environment, var.service_name)
 
@@ -93,21 +93,20 @@ resource "azurerm_kubernetes_cluster" "aks" {
     vm_size         = var.vm_size
     os_disk_size_gb = var.os_disk_size_gb
     max_pods        = var.max_pods
-    vnet_subnet_id  = data.azurerm_subnet.sbn-az01-azgov-cloudwiz-app.id
+    vnet_subnet_id  = azurerm_subnet.sbn_app.id
     os_sku          = var.os_sku
-    #enable_host_encryption = true # enable-encryption-at-host 
+    enable_host_encryption = true # enable-encryption-at-host 
   }
 
   sku_tier = "Standard"
-  
-  role_based_access_control_enabled = true              # Kubernetes의 기본 RBAC를 사용하고자 할 때, Azure AD 통합이 필요 없을 때 사용
+  #role_based_access_control_enabled = true              # Kubernetes의 기본 RBAC를 사용하고자 할 때, Azure AD 통합이 필요 없을 때 사용
 
-  # azure_active_directory_role_based_access_control {    # Azure AD와 통합된 RBAC를 설정
-  #   managed = true                                      # AKS가 필요한 Azure AD 애플리케이션을 자동으로 생성 및 관리, 이미 존재하는 애플리케이션을 사용하려면 managed = false로 설정
-  #   #admin_group_object_ids = [data.azurerm_client_config.default.object_id]      # AKS 클러스터 관리자 권한을 부여할 Azure AD 그룹의 Object ID를 지정
-  #   azure_rbac_enabled     = true
-  #   #tenant_id              = data.azurerm_client_config.default.tenant_id
-  # }
+  azure_active_directory_role_based_access_control {    # Azure AD와 통합된 RBAC를 설정
+    managed = true                                      # AKS가 필요한 Azure AD 애플리케이션을 자동으로 생성 및 관리, 이미 존재하는 애플리케이션을 사용하려면 managed = false로 설정
+    #admin_group_object_ids = [data.azurerm_client_config.default.object_id]      # AKS 클러스터 관리자 권한을 부여할 Azure AD 그룹의 Object ID를 지정
+    azure_rbac_enabled     = true
+    #tenant_id              = data.azurerm_client_config.default.tenant_id
+  }
 
 
   identity {
@@ -152,23 +151,23 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   depends_on = [
     azurerm_role_assignment.roleassign-01,
-    azurerm_role_assignment.roleassign-04,
+    azurerm_role_assignment.roleassign-02,
     azurerm_role_assignment.roleassign-03
   ]
 }
 
-# resource "azurerm_kubernetes_cluster_node_pool" "nodepool" {
-#   provider = azurerm.A
-# 	name = format("%s%s", var.environment, var.service_name)
-#   vm_size  = var.vm_size
-#   os_disk_size_gb = var.os_disk_size_gb
-#   node_count = var.additional_node_count
-#   max_pods   = var.max_pods
-#   os_sku     = var.os_sku
+resource "azurerm_kubernetes_cluster_node_pool" "nodepool" {
+  provider = azurerm.A
+	name = format("%s%s", var.environment, var.service_name)
+  vm_size  = var.vm_size
+  os_disk_size_gb = var.os_disk_size_gb
+  node_count = var.additional_node_count
+  max_pods   = var.max_pods
+  os_sku     = var.os_sku
 
-#   kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
-#   vnet_subnet_id        = data.azurerm_subnet.sbn-az01-azgov-cloudwiz-app.id
-# }
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
+  vnet_subnet_id        = azurerm_subnet.sbn_app.id
+}
 
 output "ssh_private_key" {
   value = nonsensitive(tls_private_key.tlskey-01.private_key_pem)
