@@ -129,10 +129,10 @@ resource "azurerm_resource_group" "rg" {
   provider = azurerm.A
 }
 
-data "azurerm_resource_group" "rg" {
-  name     = format("rg-az01-%s-%s-%s-01", var.service_code, var.environment, var.service_name)
-  provider = azurerm.A
-}
+# data "azurerm_resource_group" "rg" {
+#   name     = format("rg-az01-%s-%s-%s-01", var.service_code, var.environment, var.service_name)
+#   provider = azurerm.A
+# }
 
 # Virtual Network Creation
 resource "azurerm_virtual_network" "vnet" {
@@ -143,11 +143,11 @@ resource "azurerm_virtual_network" "vnet" {
   provider            = azurerm.A
 }
 
-data "azurerm_virtual_network" "vnet" {
-  name                = format("vnet-az01-%s-%s-01", var.environment, var.service_name)
-  resource_group_name = data.azurerm_resource_group.rg.name
-  provider            = azurerm.A
-}
+# data "azurerm_virtual_network" "vnet" {
+#   name                = format("vnet-az01-%s-%s-01", var.environment, var.service_name)
+#   resource_group_name = data.azurerm_resource_group.rg.name
+#   provider            = azurerm.A
+# }
 
 # Subnets Creation with Conditions
 resource "azurerm_subnet" "sbn_appgw" {
@@ -160,7 +160,9 @@ resource "azurerm_subnet" "sbn_appgw" {
     var.cidr == 24 ? format("10.241.%d.0/27", var.third_octet) :
     format("10.241.%d.0/27", var.third_octet)  # default for 25
   ]
-  private_endpoint_network_policies = "Disabled"
+  #private_endpoint_network_policies = "Disabled"
+  private_endpoint_network_policies = "NetworkSecurityGroupEnabled"
+  default_outbound_access_enabled = false
 }
 
 resource "azurerm_subnet" "sbn_lb" {
@@ -173,6 +175,9 @@ resource "azurerm_subnet" "sbn_lb" {
     var.cidr == 24 ? format("10.241.%d.32/28", var.third_octet) :
     format("10.241.%d.112/28", var.third_octet)  # default for 25
   ]
+  #private_endpoint_network_policies = "Disabled"
+  private_endpoint_network_policies = "NetworkSecurityGroupEnabled"
+  default_outbound_access_enabled = false
 }
 
 resource "azurerm_subnet" "sbn_app" {
@@ -186,7 +191,9 @@ resource "azurerm_subnet" "sbn_app" {
     var.cidr == 24 ? format("10.241.%d.128/25", var.third_octet) :
     format("10.241.%d.32/27", var.third_octet)  # default for 25
   ]
-  private_endpoint_network_policies = "Disabled"
+  #private_endpoint_network_policies = "Disabled"
+  private_endpoint_network_policies = "NetworkSecurityGroupEnabled"
+  default_outbound_access_enabled = false  
 }
 
 resource "azurerm_subnet" "sbn_db" {
@@ -219,15 +226,18 @@ resource "azurerm_subnet" "sbn_db" {
       ]
     }
   }
+  #private_endpoint_network_policies = "Disabled"
+  private_endpoint_network_policies = "NetworkSecurityGroupEnabled"
+  default_outbound_access_enabled = false
 }
 
 # Subnets Creation
-data "azurerm_subnet" "sbn_db" {
-  provider             = azurerm.A
-  name                 = format("sbn-az01-%s-%s-db", var.environment, var.service_name)
-  resource_group_name  = data.azurerm_resource_group.rg.name
-  virtual_network_name = data.azurerm_virtual_network.vnet.name
-}
+# data "azurerm_subnet" "sbn_db" {
+#   provider             = azurerm.A
+#   name                 = format("sbn-az01-%s-%s-db", var.environment, var.service_name)
+#   resource_group_name  = data.azurerm_resource_group.rg.name
+#   virtual_network_name = data.azurerm_virtual_network.vnet.name
+# }
 
 
 resource "azurerm_subnet" "sbn_pe" {
@@ -240,14 +250,17 @@ resource "azurerm_subnet" "sbn_pe" {
     var.cidr == 24 ? format("10.241.%d.96/27", var.third_octet) :
     format("10.241.%d.80/28", var.third_octet)  # default for 25
   ]
+  #private_endpoint_network_policies = "Disabled"
+  private_endpoint_network_policies = "NetworkSecurityGroupEnabled"
+  default_outbound_access_enabled = false
 }
 
-data "azurerm_subnet" "sbn_pe" {
-  provider             = azurerm.A
-  name                 = format("sbn-az01-%s-%s-pe", var.environment, var.service_name)
-  resource_group_name  = data.azurerm_resource_group.rg.name
-  virtual_network_name = data.azurerm_virtual_network.vnet.name
-}
+# data "azurerm_subnet" "sbn_pe" {
+#   provider             = azurerm.A
+#   name                 = format("sbn-az01-%s-%s-pe", var.environment, var.service_name)
+#   resource_group_name  = data.azurerm_resource_group.rg.name
+#   virtual_network_name = data.azurerm_virtual_network.vnet.name
+# }
 
 resource "azurerm_subnet" "sbn_etc" {
   provider             = azurerm.A
@@ -259,6 +272,9 @@ resource "azurerm_subnet" "sbn_etc" {
     var.cidr == 24 ? format("10.241.%d.48/28", var.third_octet) :
     format("10.241.%d.96/28", var.third_octet)  # default for 25
   ]
+  #private_endpoint_network_policies = "Disabled"
+  private_endpoint_network_policies = "NetworkSecurityGroupEnabled"
+  default_outbound_access_enabled = false
 }
 
 # UDR (User Defined Route) Creation
@@ -287,7 +303,7 @@ resource "azurerm_route_table" "udr_app" {
   }
 }
 
-# Subnet Route Table Associations
+# # Subnet Route Table Associations
 resource "azurerm_subnet_route_table_association" "assoc_appgw" {
   provider       = azurerm.A
   subnet_id      = azurerm_subnet.sbn_appgw.id
